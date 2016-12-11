@@ -7,20 +7,28 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import java.util.ArrayList;
+
 public class MainActivity extends ListActivity {
-    String[] names = {"fff", "ddd", "add", "sdd", "gdd", "cdd", "edd"};
+    ArrayList<Section> sections = new ArrayList<>();
+    {
+        sections.add(new Section("Раздел 1", "описание", R.mipmap.ic_launcher));
+        sections.add(new Section("Раздел 1", "описание", R.mipmap.ic_launcher));
+        sections.add(new Section("Раздел 1", "описание", R.mipmap.ic_launcher));
+        sections.add(new Section("Раздел 1", "описание", R.mipmap.ic_launcher));
+        sections.add(new Section("Раздел 1", "описание", R.mipmap.ic_launcher));
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, R.layout.rowlayout, R.id.label, names);
+        MoonshineArrayAdapter adapter = new MoonshineArrayAdapter(this, sections);
         setListAdapter(adapter);
     }
 
     @Override
     protected void onListItemClick(ListView l, View v, int position, long id) {
-        String item = (String) getListAdapter().getItem(position);
-        Toast.makeText(this, item + " selected", Toast.LENGTH_LONG).show();
+        Toast.makeText(this, "selected", Toast.LENGTH_LONG).show();
     }
 }
