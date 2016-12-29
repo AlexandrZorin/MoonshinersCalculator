@@ -9,6 +9,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import project.phoenix.moonshiterscalculator.MainActivity;
 import project.phoenix.moonshiterscalculator.R;
@@ -17,13 +18,14 @@ public class SectionOneActivity extends AppCompatActivity {
     private Button buttonResult;
     private EditText editTextStrength;
     private EditText editTextVolume;
-    private EditText editTextDiluent;
     private EditText editTextRequiredResultStrength;
     private TextView textViewResultVolumeDiluent;
     private TextView textViewResultVolume;
+    private String textStrength;
+    private String textVolume;
+    private String textRequiredResultStrength;
     private double strength;
     private double volume;
-    private double diluent;
     private double requiredResultStrength;
 
     @Override
@@ -61,17 +63,23 @@ public class SectionOneActivity extends AppCompatActivity {
         buttonResult = (Button) findViewById(R.id.button);
         editTextStrength = (EditText) findViewById(R.id.strength);
         editTextVolume = (EditText) findViewById(R.id.volume);
-        editTextDiluent = (EditText) findViewById(R.id.diluent);
         editTextRequiredResultStrength = (EditText) findViewById(R.id.required_result_strength);
         textViewResultVolumeDiluent = (TextView) findViewById(R.id.result_volume_diluent);
         textViewResultVolume = (TextView) findViewById(R.id.result_volume);
+        textStrength = editTextStrength.getText().toString();
+        textVolume = editTextVolume.getText().toString();
+        textRequiredResultStrength = editTextRequiredResultStrength.getText().toString();
     }
 
     private void parserStringToIntForResources() {
-        strength = Double.parseDouble(editTextStrength.getText().toString());
-        volume = Double.parseDouble(editTextVolume.getText().toString());
-        diluent = Double.parseDouble(editTextDiluent.getText().toString());
-        requiredResultStrength = Double.parseDouble(editTextRequiredResultStrength.getText().toString());
+        if (textStrength.matches("") || textVolume.matches("") ||
+                textRequiredResultStrength.matches("")) {
+            Toast.makeText(this, "Все поля должны быть заполнены", Toast.LENGTH_LONG).show();
+        } else {
+            strength = Double.parseDouble(editTextStrength.getText().toString());
+            volume = Double.parseDouble(editTextVolume.getText().toString());
+            requiredResultStrength = Double.parseDouble(editTextRequiredResultStrength.getText().toString());
+        }
     }
 
     private String calculateResultVolume(double volume, double volumeDiluent) {
