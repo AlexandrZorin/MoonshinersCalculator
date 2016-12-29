@@ -30,18 +30,6 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Крепость разбавителя, %"/>
-
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:inputType="number"
-        android:ems="10"
-        android:id="@+id/diluent" />
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
         android:text="Требующаяся крепость раствора, % об."/>
 
     <EditText
@@ -55,7 +43,7 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Объем разбавителя, мл"/>
+        android:text="Объем воды, мл"/>
 
     <TextView
         android:layout_width="match_parent"
