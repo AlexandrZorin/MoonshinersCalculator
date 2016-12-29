@@ -69,7 +69,7 @@ public class MainActivity extends AppCompatActivity {
     private void dialogQuitApplication() {
         AlertDialog.Builder quitDialog = new AlertDialog.Builder(MainActivity.this);
         quitDialog.setTitle("Выход: Вы уверены?");
-        quitDialog.setPositiveButton("Да!", new DialogInterface.OnClickListener() {
+        quitDialog.setPositiveButton("Да", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 // TODO Auto-generated method stub
