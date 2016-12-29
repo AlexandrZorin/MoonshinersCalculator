@@ -22,7 +22,7 @@ public class MainActivity extends AppCompatActivity {
     private ListView listView;
     private Context context = this;
     {
-        sections.add(new Section("Раздел 1", "описание", R.mipmap.ic_launcher));
+        sections.add(new Section("Разбавление", "Расчет разбавления водноспиртовых растворов с учетом концентрации", R.mipmap.ic_launcher));
         sections.add(new Section("Раздел 2", "описание", R.mipmap.ic_launcher));
         sections.add(new Section("Раздел 3", "описание", R.mipmap.ic_launcher));
         sections.add(new Section("Раздел 4", "описание", R.mipmap.ic_launcher));
