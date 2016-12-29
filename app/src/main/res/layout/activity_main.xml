@@ -5,11 +5,12 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="project.phoenix.moonshiterscalculator.MainActivity"
-    android:background="@android:color/holo_green_dark">
+    android:background="@android:color/holo_red_dark">
     <ListView
         android:id="@android:id/list"
-        android:layout_width="match_parent"
+        android:layout_width="300dp"
         android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
         android:background="@android:color/holo_green_dark">
 
     </ListView>
