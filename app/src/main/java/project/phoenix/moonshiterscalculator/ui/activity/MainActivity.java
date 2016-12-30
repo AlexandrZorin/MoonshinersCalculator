@@ -67,7 +67,8 @@ public class MainActivity extends AppCompatActivity {
             Intent intent = new Intent(MainActivity.this, BragaActivity.class);
             startActivity(intent);
         } else {
-            Toast.makeText(context, "selected " + (position + 1) + " element", Toast.LENGTH_SHORT).show();
+            Toast.makeText(context, "selected " + (position + 1) + " element", Toast.LENGTH_SHORT)
+                    .show();
         }
     }
 
