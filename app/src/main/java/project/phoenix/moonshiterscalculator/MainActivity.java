@@ -14,7 +14,7 @@ import android.widget.Toast;
 
 import java.util.ArrayList;
 
-import project.phoenix.moonshiterscalculator.sectionone.SectionOneActivity;
+import project.phoenix.moonshiterscalculator.sectionone.DilutionActivity;
 
 public class MainActivity extends AppCompatActivity {
     private ArrayList<Object> sections = new ArrayList<>();
@@ -59,7 +59,7 @@ public class MainActivity extends AppCompatActivity {
 
     private void onListViewItemClick(int position) {
         if (position == 0) {
-            Intent intent = new Intent(MainActivity.this, SectionOneActivity.class);
+            Intent intent = new Intent(MainActivity.this, DilutionActivity.class);
             startActivity(intent);
         } else {
             Toast.makeText(context, "selected " + (position + 1) + " element", Toast.LENGTH_SHORT).show();

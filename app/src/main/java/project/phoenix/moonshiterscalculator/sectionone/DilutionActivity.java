@@ -14,16 +14,13 @@ import android.widget.Toast;
 import project.phoenix.moonshiterscalculator.MainActivity;
 import project.phoenix.moonshiterscalculator.R;
 
-public class SectionOneActivity extends AppCompatActivity {
+public class DilutionActivity extends AppCompatActivity {
     private Button buttonResult;
     private EditText editTextStrength;
     private EditText editTextVolume;
     private EditText editTextRequiredResultStrength;
     private TextView textViewResultVolumeDiluent;
     private TextView textViewResultVolume;
-    private String textStrength;
-    private String textVolume;
-    private String textRequiredResultStrength;
     private double strength;
     private double volume;
     private double requiredResultStrength;
@@ -31,7 +28,7 @@ public class SectionOneActivity extends AppCompatActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_section_one);
+        setContentView(R.layout.activity_dilution);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         initializeViews();
         buttonResult.setOnClickListener(new View.OnClickListener() {
@@ -66,19 +63,22 @@ public class SectionOneActivity extends AppCompatActivity {
         editTextRequiredResultStrength = (EditText) findViewById(R.id.required_result_strength);
         textViewResultVolumeDiluent = (TextView) findViewById(R.id.result_volume_diluent);
         textViewResultVolume = (TextView) findViewById(R.id.result_volume);
-        textStrength = editTextStrength.getText().toString();
-        textVolume = editTextVolume.getText().toString();
-        textRequiredResultStrength = editTextRequiredResultStrength.getText().toString();
     }
 
     private void parserStringToIntForResources() {
-        if (textStrength.matches("") || textVolume.matches("") ||
-                textRequiredResultStrength.matches("")) {
-            Toast.makeText(this, "Все поля должны быть заполнены", Toast.LENGTH_LONG).show();
+        String textStrength = editTextStrength.getText().toString();
+        String textVolume = editTextVolume.getText().toString();
+        String textRequiredResultStrength = editTextRequiredResultStrength.getText().toString();
+        if (textStrength.matches("")) {
+            Toast.makeText(this, "Поле \"Исходная крепость\" должно быть заолнено", Toast.LENGTH_LONG).show();
+        } else if (textVolume.matches("")) {
+            Toast.makeText(this, "Поле \"Исходный объем\" должно быть заолнено", Toast.LENGTH_LONG).show();
+        } else if (textRequiredResultStrength.matches("")) {
+            Toast.makeText(this, "Поле \"Требующаяся крепрость раствора\" должно быть заолнено", Toast.LENGTH_LONG).show();
         } else {
-            strength = Double.parseDouble(editTextStrength.getText().toString());
-            volume = Double.parseDouble(editTextVolume.getText().toString());
-            requiredResultStrength = Double.parseDouble(editTextRequiredResultStrength.getText().toString());
+            strength = Double.parseDouble(textStrength);
+            volume = Double.parseDouble(textVolume);
+            requiredResultStrength = Double.parseDouble(textRequiredResultStrength);
         }
     }
 
@@ -87,7 +87,7 @@ public class SectionOneActivity extends AppCompatActivity {
     }
 
     private String calculateResultVolumeDiluent() {
-        double result = strength * volume / requiredResultStrength - volume;
+        double result = ((strength / requiredResultStrength) * volume) - volume;
         return String.valueOf(result);
     }
 }
