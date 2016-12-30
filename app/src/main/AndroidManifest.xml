@@ -20,7 +20,11 @@
         <activity
             android:name=".dilution.DilutionActivity"
             android:noHistory="true"
-            android:label="@string/app_name" />
+            android:label="@string/dilution_title" />
+        <activity
+            android:name=".braga.BragaActivity"
+            android:noHistory="true"
+            android:label="@string/braga_title" />
     </application>
 
 </manifest>
