@@ -14,6 +14,7 @@ import android.widget.Toast;
 
 import java.util.ArrayList;
 
+import project.phoenix.moonshiterscalculator.braga.BragaActivity;
 import project.phoenix.moonshiterscalculator.dilution.DilutionActivity;
 
 public class MainActivity extends AppCompatActivity {
@@ -21,13 +22,6 @@ public class MainActivity extends AppCompatActivity {
     private MoonshineArrayAdapter listAdapter;
     private ListView listView;
     private Context context = this;
-    {
-        sections.add(new Section("Разбавление", "Расчет разбавления водноспиртовых растворов с учетом концентрации", R.mipmap.ic_launcher));
-        sections.add(new Section("Раздел 2", "описание", R.mipmap.ic_launcher));
-        sections.add(new Section("Раздел 3", "описание", R.mipmap.ic_launcher));
-        sections.add(new Section("Раздел 4", "описание", R.mipmap.ic_launcher));
-        sections.add(new Section("Раздел 5", "описание", R.mipmap.ic_launcher));
-    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,6 +31,11 @@ public class MainActivity extends AppCompatActivity {
         if (toolbar != null) {
             setSupportActionBar(toolbar);
         }
+        sections.add(new Section(getResources().getString(R.string.dilution_title), getResources().getString(R.string.dilution_description), R.mipmap.ic_launcher));
+        sections.add(new Section(getResources().getString(R.string.braga_title), getResources().getString(R.string.braga_description), R.mipmap.ic_launcher));
+        sections.add(new Section("Раздел 3", "описание", R.mipmap.ic_launcher));
+        sections.add(new Section("Раздел 4", "описание", R.mipmap.ic_launcher));
+        sections.add(new Section("Раздел 5", "описание", R.mipmap.ic_launcher));
         listViewCreate();
     }
 
@@ -60,6 +59,9 @@ public class MainActivity extends AppCompatActivity {
     private void onListViewItemClick(int position) {
         if (position == 0) {
             Intent intent = new Intent(MainActivity.this, DilutionActivity.class);
+            startActivity(intent);
+        } else if (position == 1) {
+            Intent intent = new Intent(MainActivity.this, BragaActivity.class);
             startActivity(intent);
         } else {
             Toast.makeText(context, "selected " + (position + 1) + " element", Toast.LENGTH_SHORT).show();
