@@ -1,4 +1,4 @@
-package project.phoenix.moonshiterscalculator.sectionone;
+package project.phoenix.moonshiterscalculator.dilution;
 
 import android.content.Intent;
 import android.os.Bundle;

@@ -14,7 +14,7 @@ import android.widget.Toast;
 
 import java.util.ArrayList;
 
-import project.phoenix.moonshiterscalculator.sectionone.DilutionActivity;
+import project.phoenix.moonshiterscalculator.dilution.DilutionActivity;
 
 public class MainActivity extends AppCompatActivity {
     private ArrayList<Object> sections = new ArrayList<>();
