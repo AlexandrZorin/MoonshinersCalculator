@@ -1,3 +1,10 @@
 <resources>
-    <string name="app_name">MoonshitersCalculator</string>
+    <string name="app_name">Калькулятор самогонщика</string>
+
+    <string name="dilution_title">Разбавление</string>
+    <string name="dilution_description">Расчет разбавления водноспиртовых растворов с
+        учетом концентрации</string>
+    <string name="braga_title">Расчет браги</string>
+    <string name="braga_description">Определение правильных пропорций браги и
+        максимально возможного содержания спирта после окончания брожения</string>
 </resources>
