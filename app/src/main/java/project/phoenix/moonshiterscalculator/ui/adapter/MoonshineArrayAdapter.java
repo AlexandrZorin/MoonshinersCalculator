@@ -1,4 +1,4 @@
-package project.phoenix.moonshiterscalculator;
+package project.phoenix.moonshiterscalculator.ui.adapter;
 
 import android.content.Context;
 import android.support.annotation.NonNull;
@@ -11,6 +11,9 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.util.List;
+
+import project.phoenix.moonshiterscalculator.R;
+import project.phoenix.moonshiterscalculator.ui.Section;
 
 /**
  * Custom ListView adapter based on ArrayAdapter.

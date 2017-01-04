@@ -4,7 +4,7 @@
     android:id="@+id/activity_main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="project.phoenix.moonshiterscalculator.MainActivity"
+    tools:context="project.phoenix.moonshiterscalculator.ui.activity.MainActivity"
     android:background="@android:color/holo_red_dark">
     <ListView
         android:id="@+id/mainList"

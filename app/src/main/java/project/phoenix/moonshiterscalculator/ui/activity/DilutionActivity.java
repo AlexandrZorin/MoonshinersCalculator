@@ -1,4 +1,4 @@
-package project.phoenix.moonshiterscalculator.dilution;
+package project.phoenix.moonshiterscalculator.ui.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -11,8 +11,11 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import project.phoenix.moonshiterscalculator.MainActivity;
 import project.phoenix.moonshiterscalculator.R;
+
+/**
+ * Class for initialization
+ */
 
 public class DilutionActivity extends AppCompatActivity {
     private Button buttonResult;

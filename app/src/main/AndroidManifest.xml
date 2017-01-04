@@ -9,7 +9,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".MainActivity"
+            android:name=".ui.activity.MainActivity"
             android:noHistory="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -18,11 +18,11 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".dilution.DilutionActivity"
+            android:name=".ui.activity.DilutionActivity"
             android:noHistory="true"
             android:label="@string/dilution_title" />
         <activity
-            android:name=".braga.BragaActivity"
+            android:name=".ui.activity.BragaActivity"
             android:noHistory="true"
             android:label="@string/braga_title" />
     </application>

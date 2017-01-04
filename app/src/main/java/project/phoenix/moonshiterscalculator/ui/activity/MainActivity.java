@@ -1,4 +1,4 @@
-package project.phoenix.moonshiterscalculator;
+package project.phoenix.moonshiterscalculator.ui.activity;
 
 import android.content.Context;
 import android.content.DialogInterface;
@@ -14,8 +14,9 @@ import android.widget.Toast;
 
 import java.util.ArrayList;
 
-import project.phoenix.moonshiterscalculator.braga.BragaActivity;
-import project.phoenix.moonshiterscalculator.dilution.DilutionActivity;
+import project.phoenix.moonshiterscalculator.ui.adapter.MoonshineArrayAdapter;
+import project.phoenix.moonshiterscalculator.R;
+import project.phoenix.moonshiterscalculator.ui.Section;
 
 public class MainActivity extends AppCompatActivity {
     private ArrayList<Object> sections = new ArrayList<>();
