@@ -70,11 +70,12 @@ public class DilutionActivity extends AppCompatActivity {
         String textVolume = editTextVolume.getText().toString();
         String textRequiredResultStrength = editTextRequiredResultStrength.getText().toString();
         if (textStrength.matches("")) {
-            Toast.makeText(this, "Поле \"Исходная крепость\" должно быть заолнено", Toast.LENGTH_LONG).show();
+            Toast.makeText(this, R.string.dilution_textView_strength, Toast.LENGTH_LONG).show();
         } else if (textVolume.matches("")) {
-            Toast.makeText(this, "Поле \"Исходный объем\" должно быть заолнено", Toast.LENGTH_LONG).show();
+            Toast.makeText(this, R.string.dilution_textView_volume, Toast.LENGTH_LONG).show();
         } else if (textRequiredResultStrength.matches("")) {
-            Toast.makeText(this, "Поле \"Требующаяся крепрость раствора\" должно быть заолнено", Toast.LENGTH_LONG).show();
+            Toast.makeText(this, R.string.dilution_textView_required_result_strength,
+                    Toast.LENGTH_LONG).show();
         } else {
             strength = Double.parseDouble(textStrength);
             volume = Double.parseDouble(textVolume);

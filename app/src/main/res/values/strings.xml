@@ -12,6 +12,12 @@
     <string name="dilution_result_volume_diluent">Объем воды, мл</string>
     <string name="dilution_result_volume">Результирующий(общий) объем, мл</string>
     <string name="dilution_button">Рассчитать</string>
+    <string name="dilution_exception_blank_field_strength">Поле "Исходная крепость" должно быть
+        заолнено</string>
+    <string name="dilution_exception_blank_field_volume">Поле "Исходный объем" должно быть
+        заолнено</string>
+    <string name="dilution_exception_blank_field_required_result_strength">Поле "Требующаяся
+        крепрость раствора" должно быть заолнено</string>
 
     <!--braga-->
     <string name="braga_title">Расчет браги</string>
