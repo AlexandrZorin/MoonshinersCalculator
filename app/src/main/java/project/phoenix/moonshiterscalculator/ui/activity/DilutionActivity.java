@@ -14,7 +14,7 @@ import android.widget.Toast;
 import project.phoenix.moonshiterscalculator.R;
 
 /**
- * Class for initialization
+ * Activity for calculation to dilution solutions
  */
 
 public class DilutionActivity extends AppCompatActivity {
@@ -32,8 +32,14 @@ public class DilutionActivity extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dilution);
+
+        //set on ActionBar homeAsUp button
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        initializeViews();
+
+        //initialization views for UI elements
+        initViews();
+
+        //initialization clicking on the button for calculating and showing it
         buttonResult.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -44,6 +50,9 @@ public class DilutionActivity extends AppCompatActivity {
         });
     }
 
+    /**
+     * Adding logic to homeAsUp button (return to ActivityMain)
+     */
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
@@ -54,12 +63,19 @@ public class DilutionActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
+    /**
+     * Change logic for Back button. Instead of returning to the previous activity returns
+     * to MainActivity.
+     */
     @Override
     public void onBackPressed() {
         startActivity(new Intent(this, MainActivity.class));
     }
 
-    private void initializeViews() {
+    /**
+     * Initialization views for UI elements.
+     */
+    private void initViews() {
         buttonResult = (Button) findViewById(R.id.button);
         editTextStrength = (EditText) findViewById(R.id.strength);
         editTextVolume = (EditText) findViewById(R.id.volume);
@@ -68,6 +84,10 @@ public class DilutionActivity extends AppCompatActivity {
         textViewResultVolume = (TextView) findViewById(R.id.result_volume);
     }
 
+    /**
+     * Check fields for filling.
+     * Migration of fields from String to a double.
+     */
     private void parserStringToIntForResources() {
         String textStrength = editTextStrength.getText().toString();
         String textVolume = editTextVolume.getText().toString();
@@ -86,10 +106,20 @@ public class DilutionActivity extends AppCompatActivity {
         }
     }
 
+    /**
+     * Volume calculation by folding
+     *
+     * @return result calculation volume
+     */
     private String calculateResultVolume(double volume, double volumeDiluent) {
         return String.valueOf(volume + volumeDiluent);
     }
 
+    /**
+     * Quantity of water to be added to the solution and achieve the required fort.
+     *
+     * @return volume water for adding to the solution.
+     */
     private String calculateResultVolumeDiluent() {
         double result = ((strength / requiredResultStrength) * volume) - volume;
         return String.valueOf(result);
