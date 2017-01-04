@@ -1,9 +1,19 @@
 <resources>
     <string name="app_name">Калькулятор самогонщика</string>
 
+    <!--dilution-->
     <string name="dilution_title">Разбавление</string>
     <string name="dilution_description">Расчет разбавления водноспиртовых растворов с
         учетом концентрации</string>
+    <string name="dilution_textView_strength">Исходная крепость, %</string>
+    <string name="dilution_textView_volume">Исходный объем, мл</string>
+    <string name="dilution_textView_required_result_strength">Требующаяся крепость раствора,
+        % об.</string>
+    <string name="dilution_result_volume_diluent">Объем воды, мл</string>
+    <string name="dilution_result_volume">Результирующий(общий) объем, мл</string>
+    <string name="dilution_button">Рассчитать</string>
+
+    <!--braga-->
     <string name="braga_title">Расчет браги</string>
     <string name="braga_description">Определение правильных пропорций браги и
         максимально возможного содержания спирта после окончания брожения</string>

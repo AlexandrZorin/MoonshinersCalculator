@@ -6,7 +6,7 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Исходная крепость, %"/>
+        android:text="@string/dilution_textView_strength"/>
 
     <EditText
         android:layout_width="match_parent"
@@ -18,7 +18,7 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Исходный объем, мл"/>
+        android:text="@string/dilution_textView_volume"/>
 
     <EditText
         android:layout_width="match_parent"
@@ -30,7 +30,7 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Требующаяся крепость раствора, % об."/>
+        android:text="@string/dilution_textView_required_result_strength"/>
 
     <EditText
         android:layout_width="match_parent"
@@ -43,7 +43,7 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Объем воды, мл"/>
+        android:text="@string/dilution_result_volume_diluent"/>
 
     <TextView
         android:layout_width="match_parent"
@@ -54,7 +54,7 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Результирующий(общий) объем, мл"/>
+        android:text="@string/dilution_result_volume"/>
 
     <TextView
         android:layout_width="match_parent"
@@ -63,7 +63,7 @@
         android:id="@+id/result_volume" />
 
     <Button
-        android:text="Рассчитать"
+        android:text="@string/dilution_button"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/button" />
