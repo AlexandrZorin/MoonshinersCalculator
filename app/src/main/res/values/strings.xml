@@ -23,4 +23,6 @@
     <string name="braga_title">Расчет браги</string>
     <string name="braga_description">Определение правильных пропорций браги и
         максимально возможного содержания спирта после окончания брожения</string>
+    <string name="braga_textView_weight_sugar">Вес сахара</string>
+    <string name="braga_textView_solution_volume">Объем раствора</string>
 </resources>
