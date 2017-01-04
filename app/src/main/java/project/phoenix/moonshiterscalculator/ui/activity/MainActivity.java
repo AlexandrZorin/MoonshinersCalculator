@@ -16,7 +16,7 @@ import java.util.ArrayList;
 
 import project.phoenix.moonshiterscalculator.ui.adapter.MoonshineArrayAdapter;
 import project.phoenix.moonshiterscalculator.R;
-import project.phoenix.moonshiterscalculator.ui.Section;
+import project.phoenix.moonshiterscalculator.ui.adapter.Section;
 
 public class MainActivity extends AppCompatActivity {
     private ArrayList<Object> sections = new ArrayList<>();

@@ -1,4 +1,4 @@
-package project.phoenix.moonshiterscalculator.ui;
+package project.phoenix.moonshiterscalculator.ui.adapter;
 
 public class Section {
     private String sectionName;
