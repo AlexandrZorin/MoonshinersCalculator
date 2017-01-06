@@ -62,7 +62,8 @@ public class MoonshineArrayAdapter extends ArrayAdapter {
 
         Section section = getSection(position);
         ((TextView) rowView.findViewById(R.id.title)).setText(section.getSectionName());
-        ((TextView) rowView.findViewById(R.id.description)).setText(section.getSectionDescription());
+        ((TextView) rowView.findViewById(R.id.description))
+                .setText(section.getSectionDescription());
         ((ImageView) rowView.findViewById(R.id.image)).setImageResource(section.getImage());
         return rowView;
     }
