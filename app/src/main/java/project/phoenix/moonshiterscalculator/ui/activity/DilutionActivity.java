@@ -76,12 +76,12 @@ public class DilutionActivity extends AppCompatActivity {
      * Initialization views for UI elements.
      */
     private void initViews() {
-        buttonResult = (Button) findViewById(R.id.button);
-        editTextStrength = (EditText) findViewById(R.id.strength);
-        editTextVolume = (EditText) findViewById(R.id.volume);
-        editTextRequiredResultStrength = (EditText) findViewById(R.id.required_result_strength);
-        textViewResultVolumeDiluent = (TextView) findViewById(R.id.result_volume_diluent);
-        textViewResultVolume = (TextView) findViewById(R.id.result_volume);
+        buttonResult = (Button) findViewById(R.id.dilution_button);
+        editTextStrength = (EditText) findViewById(R.id.dilution_strength);
+        editTextVolume = (EditText) findViewById(R.id.dilution_volume);
+        editTextRequiredResultStrength = (EditText) findViewById(R.id.dilution_required_result_strength);
+        textViewResultVolumeDiluent = (TextView) findViewById(R.id.dilution_result_volume_diluent);
+        textViewResultVolume = (TextView) findViewById(R.id.dilution_result_volume);
     }
 
     /**
