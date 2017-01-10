@@ -5,25 +5,50 @@
 
     <TextView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:text="@string/braga_textView_weight_sugar"/>
 
     <EditText
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:inputType="number"
         android:ems="10"
-        android:id="@+id/weight_sugar"/>
+        android:id="@+id/braga_weight_sugar"/>
 
     <TextView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/braga_textView_solution_volume"/>
+        android:layout_height="wrap_content"
+        android:text="@string/braga_textView_water_volume"/>
 
     <EditText
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:inputType="number"
         android:ems="10"
-        android:id="@+id/solution_volume"/>
+        android:id="@+id/braga_water_volume"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/braga_textView_max_strength"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/braga_max_strength"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/braga_textView_volume_solution"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/braga_volume_solution"/>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/button_result"/>
 </LinearLayout>
