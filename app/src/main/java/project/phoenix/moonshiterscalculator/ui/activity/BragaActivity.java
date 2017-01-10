@@ -35,4 +35,12 @@ public class BragaActivity extends AppCompatActivity {
     private double dehydratedAlcohol(double sugarMg) {
         return sugarMg * 0.62;
     }
+
+    private double mgSugarPerMl(double sugarMg) {
+        return sugarMg * 0.63;
+    }
+
+    private double volumeSolution(double volumeWater, double volumeSugar) {
+        return volumeWater + volumeSugar;
+    }
 }
