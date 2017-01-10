@@ -13,7 +13,7 @@
         android:layout_height="wrap_content"
         android:inputType="number"
         android:ems="10"
-        android:id="@+id/strength" />
+        android:id="@+id/dilution_strength" />
 
     <TextView
         android:layout_width="match_parent"
@@ -25,7 +25,7 @@
         android:layout_height="wrap_content"
         android:inputType="number"
         android:ems="10"
-        android:id="@+id/volume" />
+        android:id="@+id/dilution_volume" />
 
     <TextView
         android:layout_width="match_parent"
@@ -37,7 +37,7 @@
         android:layout_height="wrap_content"
         android:inputType="number"
         android:ems="10"
-        android:id="@+id/required_result_strength" />
+        android:id="@+id/dilution_required_result_strength" />
 
 
     <TextView
@@ -48,8 +48,7 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:ems="10"
-        android:id="@+id/result_volume_diluent" />
+        android:id="@+id/dilution_result_volume_diluent" />
 
     <TextView
         android:layout_width="match_parent"
@@ -59,12 +58,11 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:ems="10"
-        android:id="@+id/result_volume" />
+        android:id="@+id/dilution_result_volume" />
 
     <Button
-        android:text="@string/dilution_button"
+        android:text="@string/button_result"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/button" />
+        android:id="@+id/dilution_button" />
 </LinearLayout>
