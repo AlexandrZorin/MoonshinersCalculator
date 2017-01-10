@@ -43,7 +43,7 @@ public class DilutionActivity extends AppCompatActivity {
         buttonResult.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                parserStringToIntForResources();
+                parserStringToDoubleForResources();
                 textViewResultVolumeDiluent.setText(calculateResultVolumeDiluent());
                 textViewResultVolume.setText(calculateResultVolume(volume, requiredResultStrength));
             }
@@ -88,7 +88,7 @@ public class DilutionActivity extends AppCompatActivity {
      * Check fields for filling.
      * Migration of fields from String to a double.
      */
-    private void parserStringToIntForResources() {
+    private void parserStringToDoubleForResources() {
         String textStrength = editTextStrength.getText().toString();
         String textVolume = editTextVolume.getText().toString();
         String textRequiredResultStrength = editTextRequiredResultStrength.getText().toString();
