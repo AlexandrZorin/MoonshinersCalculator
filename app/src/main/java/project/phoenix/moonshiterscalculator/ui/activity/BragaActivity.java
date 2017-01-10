@@ -5,11 +5,22 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.TextView;
+
+import org.w3c.dom.Text;
 
 import project.phoenix.moonshiterscalculator.R;
 
 
 public class BragaActivity extends AppCompatActivity {
+    private Button buttonResult;
+    private EditText editTextWeightSugar;
+    private EditText editTextWaterVolume;
+    private TextView textViewMaxStrength;
+    private TextView textViewVolumeSolution;
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -30,6 +41,14 @@ public class BragaActivity extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         startActivity(new Intent(this, MainActivity.class));
+    }
+
+    private void initViews() {
+        buttonResult = (Button) findViewById(R.id.braga_button);
+        editTextWeightSugar = (EditText) findViewById(R.id.braga_weight_sugar);
+        editTextWaterVolume = (EditText) findViewById(R.id.braga_water_volume);
+        textViewMaxStrength = (TextView) findViewById(R.id.braga_max_strength);
+        textViewVolumeSolution = (TextView) findViewById(R.id.braga_volume_solution);
     }
 
     private double dehydratedAlcohol(double sugarMg) {
