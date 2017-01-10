@@ -31,4 +31,8 @@ public class BragaActivity extends AppCompatActivity {
     public void onBackPressed() {
         startActivity(new Intent(this, MainActivity.class));
     }
+
+    private double dehydratedAlcohol(double sugarMg) {
+        return sugarMg * 0.62;
+    }
 }
