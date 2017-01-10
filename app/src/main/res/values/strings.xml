@@ -1,5 +1,6 @@
 <resources>
     <string name="app_name">Калькулятор самогонщика</string>
+    <string name="button_result">Рассчитать</string>
 
     <!--dilution-->
     <string name="dilution_title">Разбавление</string>
@@ -11,7 +12,6 @@
         % об.</string>
     <string name="dilution_result_volume_diluent">Объем воды, мл</string>
     <string name="dilution_result_volume">Результирующий(общий) объем, мл</string>
-    <string name="dilution_button">Рассчитать</string>
     <string name="dilution_exception_blank_field_strength">Поле "Исходная крепость" должно быть
         заолнено</string>
     <string name="dilution_exception_blank_field_volume">Поле "Исходный объем" должно быть
@@ -24,5 +24,7 @@
     <string name="braga_description">Определение правильных пропорций браги и
         максимально возможного содержания спирта после окончания брожения</string>
     <string name="braga_textView_weight_sugar">Вес сахара</string>
-    <string name="braga_textView_solution_volume">Объем раствора</string>
+    <string name="braga_textView_water_volume">Объем воды</string>
+    <string name="braga_textView_max_strength">Максимальное содержание спирта в браге</string>
+    <string name="braga_textView_volume_solution">Объем раствора сахара и воды</string>
 </resources>
