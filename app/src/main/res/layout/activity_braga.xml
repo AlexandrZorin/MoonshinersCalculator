@@ -50,5 +50,6 @@
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/button_result"/>
+        android:text="@string/button_result"
+        android:id="@+id/braga_button"/>
 </LinearLayout>
