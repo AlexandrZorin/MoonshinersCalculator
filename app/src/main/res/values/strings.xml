@@ -27,4 +27,8 @@
     <string name="braga_textView_water_volume">Объем воды</string>
     <string name="braga_textView_max_strength">Максимальное содержание спирта в браге</string>
     <string name="braga_textView_volume_solution">Объем раствора сахара и воды</string>
+    <string name="braga_exception_blank_field_weight_sugar">Поле "Вес сахара" должно быть
+        заполнено</string>
+    <string name="braga_exception_blank_field_water_volume">Поле "Объем воды" должно быть
+        заполнено</string>
 </resources>
