@@ -49,7 +49,7 @@ public class DilutionActivity extends AppCompatActivity {
                 textViewResultVolumeDiluent.setText(String.format(Locale.getDefault(),"%.2f",
                         calculateResultVolumeDiluent()));
                 textViewResultVolume.setText(String.format(Locale.getDefault(),"%.2f",
-                        calculateResultVolume(volume, requiredResultStrength)));
+                        calculateResultVolume(volume)));
             }
         });
     }
@@ -123,8 +123,8 @@ public class DilutionActivity extends AppCompatActivity {
      *
      * @return result calculation volume
      */
-    private double calculateResultVolume(double volume, double volumeDiluent) {
-        return volume + volumeDiluent;
+    private double calculateResultVolume(double volume) {
+        return volume + calculateResultVolumeDiluent();
     }
 
     /**
@@ -133,7 +133,6 @@ public class DilutionActivity extends AppCompatActivity {
      * @return volume water for adding to the solution.
      */
     private double calculateResultVolumeDiluent() {
-        double result = ((strength / requiredResultStrength) * volume) - volume;
-        return result;
+        return ((strength * volume) - (requiredResultStrength * volume)) / (requiredResultStrength);
     }
 }
