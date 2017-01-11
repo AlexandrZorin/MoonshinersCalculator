@@ -36,8 +36,16 @@ public class BragaActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 parserStringToDoubleForResources();
-                textViewVolumeSolution.setText(String.format(Locale.getDefault(),"%.2f", volumeSolution(waterVolume, mgSugarPerMl(sugarWeight))));
-                textViewDehydratedAlcohol.setText(String.format(Locale.getDefault(),"%.2f", dehydratedAlcohol(sugarWeight)));
+                double sugarVolume = mgSugarPerMl(sugarWeight);
+                double volumeSolution = volumeSolution(waterVolume, sugarVolume);
+                double dehydratedAlcohol = dehydratedAlcohol(sugarWeight);
+                textViewVolumeSolution
+                        .setText(String.format(Locale.getDefault(),"%.2f", volumeSolution));
+                textViewDehydratedAlcohol
+                        .setText(String.format(Locale.getDefault(),"%.2f", dehydratedAlcohol));
+                textViewMaxStrength
+                        .setText(String.format(Locale.getDefault(), "%.2f",
+                                maxStrength(dehydratedAlcohol, volumeSolution)));
             }
         });
     }
@@ -70,9 +78,11 @@ public class BragaActivity extends AppCompatActivity {
         String textWeightSugar = editTextWeightSugar.getText().toString();
         String textWaterVolume = editTextWaterVolume.getText().toString();
         if (textWeightSugar.matches("")) {
-            Toast.makeText(this, R.string.braga_exception_blank_field_weight_sugar, Toast.LENGTH_LONG).show();
+            Toast.makeText(this, R.string.braga_exception_blank_field_weight_sugar,
+                    Toast.LENGTH_LONG).show();
         } else if (textWaterVolume.matches("")) {
-            Toast.makeText(this, R.string.braga_exception_blank_field_water_volume, Toast.LENGTH_LONG).show();
+            Toast.makeText(this, R.string.braga_exception_blank_field_water_volume,
+                    Toast.LENGTH_LONG).show();
         } else {
             sugarWeight = Double.parseDouble(textWeightSugar);
             waterVolume = Double.parseDouble(textWaterVolume);
@@ -87,7 +97,11 @@ public class BragaActivity extends AppCompatActivity {
         return sugarWeight * 0.63;
     }
 
-    private double volumeSolution(double volumeWater, double volumeSugar) {
-        return volumeWater + volumeSugar;
+    private double volumeSolution(double volumeWater, double sugarVolume) {
+        return volumeWater + sugarVolume;
+    }
+
+    private double maxStrength(double dehydratedAlcohol, double volumeSolution) {
+        return (dehydratedAlcohol / volumeSolution) * 100;
     }
 }
