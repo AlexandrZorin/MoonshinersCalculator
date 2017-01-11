@@ -46,8 +46,10 @@ public class DilutionActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 parserStringToDoubleForResources();
-                textViewResultVolumeDiluent.setText(String.format(Locale.getDefault(),"%.2f", calculateResultVolumeDiluent()));
-                textViewResultVolume.setText(String.format(Locale.getDefault(),"%.2f", calculateResultVolume(volume, requiredResultStrength)));
+                textViewResultVolumeDiluent.setText(String.format(Locale.getDefault(),"%.2f",
+                        calculateResultVolumeDiluent()));
+                textViewResultVolume.setText(String.format(Locale.getDefault(),"%.2f",
+                        calculateResultVolume(volume, requiredResultStrength)));
             }
         });
     }
@@ -78,12 +80,18 @@ public class DilutionActivity extends AppCompatActivity {
      * Initialization views for UI elements.
      */
     private void initViews() {
-        buttonResult = (Button) findViewById(R.id.dilution_button);
-        editTextStrength = (EditText) findViewById(R.id.dilution_strength);
-        editTextVolume = (EditText) findViewById(R.id.dilution_volume);
-        editTextRequiredResultStrength = (EditText) findViewById(R.id.dilution_required_result_strength);
-        textViewResultVolumeDiluent = (TextView) findViewById(R.id.dilution_result_volume_diluent);
-        textViewResultVolume = (TextView) findViewById(R.id.dilution_result_volume);
+        buttonResult = (Button)
+                findViewById(R.id.dilution_button);
+        editTextStrength = (EditText)
+                findViewById(R.id.dilution_strength);
+        editTextVolume = (EditText)
+                findViewById(R.id.dilution_volume);
+        editTextRequiredResultStrength = (EditText)
+                findViewById(R.id.dilution_required_result_strength);
+        textViewResultVolumeDiluent = (TextView)
+                findViewById(R.id.dilution_result_volume_diluent);
+        textViewResultVolume = (TextView)
+                findViewById(R.id.dilution_result_volume);
     }
 
     /**
@@ -95,9 +103,11 @@ public class DilutionActivity extends AppCompatActivity {
         String textVolume = editTextVolume.getText().toString();
         String textRequiredResultStrength = editTextRequiredResultStrength.getText().toString();
         if (textStrength.matches("")) {
-            Toast.makeText(this, R.string.dilution_exception_blank_field_strength, Toast.LENGTH_LONG).show();
+            Toast.makeText(this, R.string.dilution_exception_blank_field_strength,
+                    Toast.LENGTH_LONG).show();
         } else if (textVolume.matches("")) {
-            Toast.makeText(this, R.string.dilution_exception_blank_field_volume, Toast.LENGTH_LONG).show();
+            Toast.makeText(this, R.string.dilution_exception_blank_field_volume,
+                    Toast.LENGTH_LONG).show();
         } else if (textRequiredResultStrength.matches("")) {
             Toast.makeText(this, R.string.dilution_exception_blank_field_required_result_strength,
                     Toast.LENGTH_LONG).show();
