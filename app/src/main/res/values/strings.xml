@@ -6,12 +6,12 @@
     <string name="dilution_title">Разбавление</string>
     <string name="dilution_description">Расчет разбавления водноспиртовых растворов с
         учетом концентрации</string>
-    <string name="dilution_textView_strength">Исходная крепость, %</string>
-    <string name="dilution_textView_volume">Исходный объем, мл</string>
+    <string name="dilution_textView_strength">Исходная крепость, % об.</string>
+    <string name="dilution_textView_volume">Исходный объем, литры</string>
     <string name="dilution_textView_required_result_strength">Требующаяся крепость раствора,
         % об.</string>
-    <string name="dilution_result_volume_diluent">Объем воды, мл</string>
-    <string name="dilution_result_volume">Результирующий(общий) объем, мл</string>
+    <string name="dilution_result_volume_diluent">Объем воды для добавления, литры</string>
+    <string name="dilution_result_volume">Результирующий(общий) объем, литры</string>
     <string name="dilution_exception_blank_field_strength">Поле \"Исходная крепость\" должно быть
         заолнено</string>
     <string name="dilution_exception_blank_field_volume">Поле \"Исходный объем\" должно быть
@@ -25,9 +25,10 @@
         максимально возможного содержания спирта после окончания брожения</string>
     <string name="braga_textView_weight_sugar">Вес сахара, кг</string>
     <string name="braga_textView_water_volume">Объем воды, литры</string>
-    <string name="braga_textView_max_strength">Максимальное содержание спирта в браге, %</string>
+    <string name="braga_textView_max_strength">Максимальное содержание спирта в браге,
+        % об.</string>
     <string name="braga_textView_volume_solution">Объем раствора сахара и воды, литры</string>
-    <string name="braga_textView_dehydrated_alcohol">Абсолютный спирт</string>
+    <string name="braga_textView_dehydrated_alcohol">Абсолютный спирт, литры</string>
     <string name="braga_exception_blank_field_weight_sugar">Поле \"Вес сахара\" должно быть
         заполнено</string>
     <string name="braga_exception_blank_field_water_volume">Поле \"Объем воды\" должно быть
