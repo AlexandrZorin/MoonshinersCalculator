@@ -11,7 +11,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import org.w3c.dom.Text;
+import java.util.Locale;
 
 import project.phoenix.moonshiterscalculator.R;
 
@@ -21,8 +21,9 @@ public class BragaActivity extends AppCompatActivity {
     private EditText editTextWeightSugar;
     private EditText editTextWaterVolume;
     private TextView textViewMaxStrength;
+    private TextView textViewDehydratedAlcohol;
     private TextView textViewVolumeSolution;
-    private double weightSugar;
+    private double sugarWeight;
     private double waterVolume;
 
     @Override
@@ -34,7 +35,9 @@ public class BragaActivity extends AppCompatActivity {
         buttonResult.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                parserStringToDoubleForResources();
+                textViewVolumeSolution.setText(String.format(Locale.getDefault(),"%.2f", volumeSolution(waterVolume, mgSugarPerMl(sugarWeight))));
+                textViewDehydratedAlcohol.setText(String.format(Locale.getDefault(),"%.2f", dehydratedAlcohol(sugarWeight)));
             }
         });
     }
@@ -59,6 +62,7 @@ public class BragaActivity extends AppCompatActivity {
         editTextWeightSugar = (EditText) findViewById(R.id.braga_weight_sugar);
         editTextWaterVolume = (EditText) findViewById(R.id.braga_water_volume);
         textViewMaxStrength = (TextView) findViewById(R.id.braga_max_strength);
+        textViewDehydratedAlcohol = (TextView) findViewById(R.id.braga_dehydrated_alcohol);
         textViewVolumeSolution = (TextView) findViewById(R.id.braga_volume_solution);
     }
 
@@ -70,17 +74,17 @@ public class BragaActivity extends AppCompatActivity {
         } else if (textWaterVolume.matches("")) {
             Toast.makeText(this, R.string.braga_exception_blank_field_water_volume, Toast.LENGTH_LONG).show();
         } else {
-            weightSugar = Double.parseDouble(textWeightSugar);
+            sugarWeight = Double.parseDouble(textWeightSugar);
             waterVolume = Double.parseDouble(textWaterVolume);
         }
     }
 
-    private double dehydratedAlcohol(double sugarMg) {
-        return sugarMg * 0.62;
+    private double dehydratedAlcohol(double sugarWeight) {
+        return sugarWeight * 0.62;
     }
 
-    private double mgSugarPerMl(double sugarMg) {
-        return sugarMg * 0.63;
+    private double mgSugarPerMl(double sugarWeight) {
+        return sugarWeight * 0.63;
     }
 
     private double volumeSolution(double volumeWater, double volumeSugar) {
