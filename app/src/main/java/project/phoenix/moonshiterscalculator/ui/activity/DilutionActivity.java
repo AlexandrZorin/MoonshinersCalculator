@@ -11,6 +11,8 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.util.Locale;
+
 import project.phoenix.moonshiterscalculator.R;
 
 /**
@@ -44,8 +46,8 @@ public class DilutionActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 parserStringToDoubleForResources();
-                textViewResultVolumeDiluent.setText(calculateResultVolumeDiluent());
-                textViewResultVolume.setText(calculateResultVolume(volume, requiredResultStrength));
+                textViewResultVolumeDiluent.setText(String.format(Locale.getDefault(),"%.2f", calculateResultVolumeDiluent()));
+                textViewResultVolume.setText(String.format(Locale.getDefault(),"%.2f", calculateResultVolume(volume, requiredResultStrength)));
             }
         });
     }
@@ -93,11 +95,11 @@ public class DilutionActivity extends AppCompatActivity {
         String textVolume = editTextVolume.getText().toString();
         String textRequiredResultStrength = editTextRequiredResultStrength.getText().toString();
         if (textStrength.matches("")) {
-            Toast.makeText(this, R.string.dilution_textView_strength, Toast.LENGTH_LONG).show();
+            Toast.makeText(this, R.string.dilution_exception_blank_field_strength, Toast.LENGTH_LONG).show();
         } else if (textVolume.matches("")) {
-            Toast.makeText(this, R.string.dilution_textView_volume, Toast.LENGTH_LONG).show();
+            Toast.makeText(this, R.string.dilution_exception_blank_field_volume, Toast.LENGTH_LONG).show();
         } else if (textRequiredResultStrength.matches("")) {
-            Toast.makeText(this, R.string.dilution_textView_required_result_strength,
+            Toast.makeText(this, R.string.dilution_exception_blank_field_required_result_strength,
                     Toast.LENGTH_LONG).show();
         } else {
             strength = Double.parseDouble(textStrength);
@@ -111,8 +113,8 @@ public class DilutionActivity extends AppCompatActivity {
      *
      * @return result calculation volume
      */
-    private String calculateResultVolume(double volume, double volumeDiluent) {
-        return String.valueOf(volume + volumeDiluent);
+    private double calculateResultVolume(double volume, double volumeDiluent) {
+        return volume + volumeDiluent;
     }
 
     /**
@@ -120,8 +122,8 @@ public class DilutionActivity extends AppCompatActivity {
      *
      * @return volume water for adding to the solution.
      */
-    private String calculateResultVolumeDiluent() {
+    private double calculateResultVolumeDiluent() {
         double result = ((strength / requiredResultStrength) * volume) - volume;
-        return String.valueOf(result);
+        return result;
     }
 }
