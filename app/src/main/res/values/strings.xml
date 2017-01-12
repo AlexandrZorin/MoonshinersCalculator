@@ -36,5 +36,11 @@
 
     <!--alcohol strength-->
     <string name="alcohol_strength_title">Крепость спирта</string>
-    <string name="alcohol_strength_description">Определение крепости спирта по массу и объему</string>
+    <string name="alcohol_strength_description">Определение крепости спирта по массу
+        и объему</string>
+
+    <!--strength correction-->
+    <string name="strength_correction_title">Коррекция ареометра</string>
+    <string name="strength_correction_description">Коррекция показаний ареометра в зависимости
+        от температуры</string>
 </resources>

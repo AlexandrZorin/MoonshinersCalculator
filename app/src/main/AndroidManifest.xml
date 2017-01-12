@@ -29,6 +29,10 @@
             android:name=".ui.activity.AlcoholStrengthActivity"
             android:noHistory="true"
             android:label="@string/alcohol_strength_title" />
+        <activity
+            android:name=".ui.activity.StrengthCorrectionActivity"
+            android:noHistory="true"
+            android:label="@string/strength_correction_title" />
     </application>
 
 </manifest>

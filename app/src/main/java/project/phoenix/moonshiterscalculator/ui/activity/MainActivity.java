@@ -21,7 +21,6 @@ import project.phoenix.moonshiterscalculator.ui.adapter.Section;
 public class MainActivity extends AppCompatActivity {
     private ArrayList<Object> sections = new ArrayList<>();
     private MoonshineArrayAdapter listAdapter;
-    private ListView listView;
     private Context context = this;
 
     @Override
@@ -41,8 +40,9 @@ public class MainActivity extends AppCompatActivity {
         sections.add(new Section(getResources().getString(R.string.alcohol_strength_title),
                 getResources().getString(R.string.alcohol_strength_description),
                 R.mipmap.ic_launcher));
-        sections.add(new Section("Раздел 4", "описание", R.mipmap.ic_launcher));
-        sections.add(new Section("Раздел 5", "описание", R.mipmap.ic_launcher));
+        sections.add(new Section(getResources().getString(R.string.strength_correction_title),
+                getResources().getString(R.string.strength_correction_description),
+                R.mipmap.ic_launcher));
         listViewCreate();
     }
 
@@ -53,7 +53,7 @@ public class MainActivity extends AppCompatActivity {
 
     private void listViewCreate() {
         listAdapter = new MoonshineArrayAdapter(context, sections);
-        listView = (ListView) findViewById(R.id.mainList);
+        ListView listView = (ListView) findViewById(R.id.mainList);
         listView.setAdapter(listAdapter);
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -70,9 +70,12 @@ public class MainActivity extends AppCompatActivity {
         } else if (position == 1) {
             Intent intent = new Intent(MainActivity.this, BragaActivity.class);
             startActivity(intent);
-        } else {
-            Toast.makeText(context, "selected " + (position + 1) + " element", Toast.LENGTH_SHORT)
-                    .show();
+        } else if (position == 2) {
+            Intent intent = new Intent(MainActivity.this, AlcoholStrengthActivity.class);
+            startActivity(intent);
+        } else if (position == 3) {
+            Intent intent = new Intent(MainActivity.this, StrengthCorrectionActivity.class);
+            startActivity(intent);
         }
     }
 
@@ -82,14 +85,12 @@ public class MainActivity extends AppCompatActivity {
         quitDialog.setPositiveButton("Да", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-                // TODO Auto-generated method stub
                 finish();
             }
         });
         quitDialog.setNegativeButton("Нет", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-                // TODO Auto-generated method stub
             }
         });
         quitDialog.show();
