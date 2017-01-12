@@ -33,4 +33,8 @@
         заполнено</string>
     <string name="braga_exception_blank_field_water_volume">Поле \"Объем воды\" должно быть
         заполнено</string>
+
+    <!--alcohol strength-->
+    <string name="alcohol_strength_title">Крепость спирта</string>
+    <string name="alcohol_strength_description">Определение крепости спирта по массу и объему</string>
 </resources>

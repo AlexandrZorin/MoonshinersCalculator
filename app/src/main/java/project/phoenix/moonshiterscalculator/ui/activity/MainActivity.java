@@ -33,10 +33,14 @@ public class MainActivity extends AppCompatActivity {
             setSupportActionBar(toolbar);
         }
         sections.add(new Section(getResources().getString(R.string.dilution_title),
-                getResources().getString(R.string.dilution_description), R.mipmap.ic_launcher));
+                getResources().getString(R.string.dilution_description),
+                R.mipmap.ic_launcher));
         sections.add(new Section(getResources().getString(R.string.braga_title),
-                getResources().getString(R.string.braga_description), R.mipmap.ic_launcher));
-        sections.add(new Section("Раздел 3", "описание", R.mipmap.ic_launcher));
+                getResources().getString(R.string.braga_description),
+                R.mipmap.ic_launcher));
+        sections.add(new Section(getResources().getString(R.string.alcohol_strength_title),
+                getResources().getString(R.string.alcohol_strength_description),
+                R.mipmap.ic_launcher));
         sections.add(new Section("Раздел 4", "описание", R.mipmap.ic_launcher));
         sections.add(new Section("Раздел 5", "описание", R.mipmap.ic_launcher));
         listViewCreate();

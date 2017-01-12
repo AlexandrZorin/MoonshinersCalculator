@@ -25,6 +25,10 @@
             android:name=".ui.activity.BragaActivity"
             android:noHistory="true"
             android:label="@string/braga_title" />
+        <activity
+            android:name=".ui.activity.AlcoholStrengthActivity"
+            android:noHistory="true"
+            android:label="@string/alcohol_strength_title" />
     </application>
 
 </manifest>
