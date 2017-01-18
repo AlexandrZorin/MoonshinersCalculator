@@ -13,4 +13,8 @@ public class AlcoholStrengthActivity extends TemplateActivity {
         setContentView(R.layout.activity_alcohol_strength);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     }
+
+    private double density(double mass, double volume) {
+        return mass / volume;
+    }
 }
