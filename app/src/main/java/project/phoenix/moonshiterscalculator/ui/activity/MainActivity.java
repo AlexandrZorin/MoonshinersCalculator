@@ -73,7 +73,7 @@ public class MainActivity extends AppCompatActivity {
             Intent intent = new Intent(MainActivity.this, AlcoholStrengthActivity.class);
             startActivity(intent);
         } else if (position == 3) {
-            Intent intent = new Intent(MainActivity.this, StrengthCorrectionActivity.class);
+            Intent intent = new Intent(MainActivity.this, StrengthCorrectActivity.class);
             startActivity(intent);
         }
     }

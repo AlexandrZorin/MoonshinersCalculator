@@ -7,11 +7,11 @@ import project.phoenix.moonshiterscalculator.R;
 import project.phoenix.moonshiterscalculator.ui.activity.template.TemplateActivity;
 
 
-public class StrengthCorrectionActivity extends TemplateActivity {
+public class StrengthCorrectActivity extends TemplateActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_strength_correction);
+        setContentView(R.layout.activity_strength_correct);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     }
 }
