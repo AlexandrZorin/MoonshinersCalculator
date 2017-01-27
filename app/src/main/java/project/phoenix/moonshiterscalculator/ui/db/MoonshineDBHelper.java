@@ -12,6 +12,7 @@ import java.util.ArrayList;
 public class MoonshineDBHelper extends SQLiteAssetHelper {
     private static final String DATABASE_NAME = "moonshine.db";
     private static final int DATABASE_VERSION = 1;
+    private Cursor cursor;
 
     public MoonshineDBHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
@@ -28,5 +29,15 @@ public class MoonshineDBHelper extends SQLiteAssetHelper {
             res.moveToNext();
         }
         return arrayList;
+    }
+
+    public double getCorrectStrength(String strengthAreometer, String temperature) {
+        SQLiteDatabase database = this.getReadableDatabase();
+        cursor = database.rawQuery(
+                "SELECT correct_strength" +
+                "FROM correct_strength_with_temperature" +
+                "WHERE ",
+                null);
+        return 0;
     }
 }
