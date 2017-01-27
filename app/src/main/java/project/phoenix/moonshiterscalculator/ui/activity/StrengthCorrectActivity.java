@@ -21,7 +21,6 @@ public class StrengthCorrectActivity extends TemplateActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_strength_correct);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-
         moonshineDBHelper = new MoonshineDBHelper(this);
         ArrayList arrayList = moonshineDBHelper.getAllTemperature();
         ArrayAdapter arrayAdapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1, arrayList);
