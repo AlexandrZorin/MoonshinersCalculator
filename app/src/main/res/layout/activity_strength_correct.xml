@@ -11,7 +11,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:inputType="number"
-        android:id="@+id/strength_correct_areometer_strength"/>
+        android:id="@+id/strength_correct_strength_areometer"/>
 
     <TextView
         android:layout_width="wrap_content"
