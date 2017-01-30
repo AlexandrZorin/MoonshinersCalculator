@@ -31,13 +31,15 @@ public class MoonshineDBHelper extends SQLiteAssetHelper {
         return arrayList;
     }
 
-    public double getCorrectStrength(String strengthAreometer, String temperature) {
+    public String getCorrectStrength(String strengthAreometer, String temperature) {
         SQLiteDatabase database = this.getReadableDatabase();
         cursor = database.rawQuery(
-                "SELECT correct_strength" +
-                "FROM correct_strength_with_temperature" +
-                "WHERE ",
+                "SELECT strength, temperature, correct_strength" +
+                "FROM areometer_strength, temperature" +
+                "JOIN correct_strength_with_temperature on areometer_strength._id = correct_strength_with_temperature.id_areometer_strength" +
+                "AND temperature._id = correct_strength_with_temperature.id_temperature" +
+                "WHERE strength = " + strengthAreometer + " AND temperature = " + temperature + ";",
                 null);
-        return 0;
+        return cursor.toString();
     }
 }
