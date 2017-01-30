@@ -34,12 +34,13 @@ public class MoonshineDBHelper extends SQLiteAssetHelper {
     public String getCorrectStrength(String strengthAreometer, String temperature) {
         SQLiteDatabase database = this.getReadableDatabase();
         cursor = database.rawQuery(
-                "SELECT strength, temperature, correct_strength" +
-                "FROM areometer_strength, temperature" +
-                "JOIN correct_strength_with_temperature on areometer_strength._id = correct_strength_with_temperature.id_areometer_strength" +
-                "AND temperature._id = correct_strength_with_temperature.id_temperature" +
+                "SELECT strength, temperature, correct_strength " +
+                "FROM areometer_strength, temperature " +
+                "JOIN correct_strength_with_temperature ON areometer_strength._id = " +
+                        "correct_strength_with_temperature.id_areometer_strength " +
+                "AND temperature._id = correct_strength_with_temperature.id_temperature " +
                 "WHERE strength = " + strengthAreometer + " AND temperature = " + temperature + ";",
                 null);
-        return cursor.toString();
+        return cursor.getString(cursor.getColumnIndex("temperature"));
     }
 }
