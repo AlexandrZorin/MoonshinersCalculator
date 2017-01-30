@@ -24,7 +24,7 @@ public class MoonshineDBHelper extends SQLiteAssetHelper {
         Cursor res = database.rawQuery("select * from temperature", null);
         res.moveToFirst();
 
-        while (res.isAfterLast() == false) {
+        while (!res.isAfterLast()) {
             arrayList.add(res.getString(res.getColumnIndex("temperature")));
             res.moveToNext();
         }
