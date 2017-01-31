@@ -31,7 +31,7 @@ public class MoonshineDBHelper extends SQLiteAssetHelper {
         return arrayList;
     }
 
-    public String getCorrectStrength(String strengthAreometer, String temperature) {
+    public String getCorrectStrength(String areometerStrength, String temperature) {
         SQLiteDatabase database = this.getReadableDatabase();
         cursor = database.rawQuery(
                 "SELECT strength, temperature, correct_strength " +
@@ -39,7 +39,7 @@ public class MoonshineDBHelper extends SQLiteAssetHelper {
                 "JOIN correct_strength_with_temperature ON areometer_strength._id = " +
                         "correct_strength_with_temperature.id_areometer_strength " +
                 "AND temperature._id = correct_strength_with_temperature.id_temperature " +
-                "WHERE strength = " + strengthAreometer + " AND temperature = " + temperature + ";",
+                "WHERE strength = " + areometerStrength + " AND temperature = " + temperature + ";",
                 null);
         return cursor.getString(cursor.getColumnIndex("temperature"));
     }
