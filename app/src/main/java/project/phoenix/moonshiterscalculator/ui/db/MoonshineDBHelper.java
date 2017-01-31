@@ -12,7 +12,6 @@ import java.util.ArrayList;
 public class MoonshineDBHelper extends SQLiteAssetHelper {
     private static final String DATABASE_NAME = "moonshine.db";
     private static final int DATABASE_VERSION = 1;
-    private Cursor cursor;
 
     public MoonshineDBHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
@@ -31,16 +30,20 @@ public class MoonshineDBHelper extends SQLiteAssetHelper {
         return arrayList;
     }
 
-    public String getCorrectStrength(String areometerStrength, String temperature) {
+    public Cursor getCorrectStrength(String areometerStrength, String temperature) {
         SQLiteDatabase database = this.getReadableDatabase();
-        cursor = database.rawQuery(
+        Cursor cursor = database.rawQuery(
                 "SELECT strength, temperature, correct_strength " +
                 "FROM areometer_strength, temperature " +
                 "JOIN correct_strength_with_temperature ON areometer_strength._id = " +
-                        "correct_strength_with_temperature.id_areometer_strength " +
+                "correct_strength_with_temperature.id_areometer_strength " +
                 "AND temperature._id = correct_strength_with_temperature.id_temperature " +
-                "WHERE strength = " + areometerStrength + " AND temperature = " + temperature + ";",
-                null);
-        return cursor.getString(cursor.getColumnIndex("temperature"));
+                "WHERE strength = ? AND temperature = ?;",
+                new String[]{areometerStrength, temperature});
+        cursor.moveToFirst();
+        System.out.println(areometerStrength);
+        System.out.println(temperature);
+        System.out.println("cursor count: " + cursor.getCount());
+        return cursor;
     }
 }

@@ -1,6 +1,7 @@
 package project.phoenix.moonshiterscalculator.ui.activity;
 
 import android.content.Context;
+import android.database.Cursor;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.ContextThemeWrapper;
@@ -45,8 +46,15 @@ public class StrengthCorrectActivity extends TemplateActivity {
                 } else if (textTemperature.matches("")) {
                     Toast.makeText(context, "ddd", Toast.LENGTH_LONG);
                 } else {
-                    String string = moonshineDBHelper.getCorrectStrength(textTemperature, textAreometerStrength);
-                    textViewCorrectStrength.setText(string);
+                    Cursor cursor = moonshineDBHelper.getCorrectStrength(textAreometerStrength, textTemperature);
+                    System.out.println(cursor.getCount());
+                    /*if (cursor.getCount() > 0) {
+                        cursor.moveToFirst();
+                        String itemStrength = cursor.getString(cursor.getColumnIndex("strength"));
+                        String itemTemperature = cursor.getString(cursor.getColumnIndex("temperature"));
+                        String itemCorrectStrength = cursor.getString(cursor.getColumnIndex("correct_strength"));
+                        textViewCorrectStrength.setText(itemCorrectStrength);
+                    }*/
                 }
             }
         });
