@@ -40,7 +40,14 @@
         и объему</string>
 
     <!--strength correction-->
-    <string name="strength_correction_title">Коррекция показаний ареометра</string>
-    <string name="strength_correction_description">Коррекция показаний ареометра в зависимости
+    <string name="strength_correct_title">Коррекция показаний ареометра</string>
+    <string name="strength_correct_description">Коррекция показаний ареометра в зависимости
         от температуры</string>
+    <string name="strength_correct_textView_areometer_strength">Показания ареометра</string>
+    <string name="strength_correct_textView_temperature">Температура спирта</string>
+    <string name="strength_correct_textView_strength_correct">Корректная крепость, % об.</string>
+    <string name="strength_correct_exception_blank_field_areometer_strength">Поле
+        \"Показания ареометра\" должно быть заполнено</string>
+    <string name="strength_correct_exception_blank_field_temperature">Поле
+        \"Температура спирта\" должно быть заполнено</string>
 </resources>
