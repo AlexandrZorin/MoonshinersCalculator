@@ -4,16 +4,11 @@ import android.content.Context;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.view.ContextThemeWrapper;
 import android.view.View;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
-
-import java.util.ArrayList;
 
 import project.phoenix.moonshiterscalculator.R;
 import project.phoenix.moonshiterscalculator.ui.activity.template.TemplateActivity;
@@ -25,9 +20,9 @@ public class StrengthCorrectActivity extends TemplateActivity {
     private EditText editTextAreometerStrength;
     private EditText editTextTemperature;
     private TextView textViewCorrectStrength;
-    private Context context = this;
-    private ListView obj;
     private MoonshineDBHelper moonshineDBHelper;
+    private Cursor cursor;
+    private String itemCorrectStrength;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -39,30 +34,9 @@ public class StrengthCorrectActivity extends TemplateActivity {
         buttonResult.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String textAreometerStrength = editTextAreometerStrength.getText().toString();
-                String textTemperature = editTextTemperature.getText().toString();
-                if (textAreometerStrength.matches("")) {
-                    Toast.makeText(context, "fff", Toast.LENGTH_LONG);
-                } else if (textTemperature.matches("")) {
-                    Toast.makeText(context, "ddd", Toast.LENGTH_LONG);
-                } else {
-                    Cursor cursor = moonshineDBHelper.getCorrectStrength(textAreometerStrength, textTemperature);
-                    System.out.println(cursor.getCount());
-                    /*if (cursor.getCount() > 0) {
-                        cursor.moveToFirst();
-                        String itemStrength = cursor.getString(cursor.getColumnIndex("strength"));
-                        String itemTemperature = cursor.getString(cursor.getColumnIndex("temperature"));
-                        String itemCorrectStrength = cursor.getString(cursor.getColumnIndex("correct_strength"));
-                        textViewCorrectStrength.setText(itemCorrectStrength);
-                    }*/
-                }
+                parserCursorFromDatabase();
             }
         });
-
-        /*ArrayList arrayList = moonshineDBHelper.getAllTemperature();
-        ArrayAdapter arrayAdapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1, arrayList);
-        obj = (ListView) findViewById(R.id.listView);
-        obj.setAdapter(arrayAdapter);*/
     }
 
     private void initViews() {
@@ -74,5 +48,30 @@ public class StrengthCorrectActivity extends TemplateActivity {
                 findViewById(R.id.strength_correct_temperature);
         textViewCorrectStrength  = (TextView)
                 findViewById(R.id.strength_correct);
+    }
+
+    private void parserCursorFromDatabase() {
+        String textAreometerStrength = editTextAreometerStrength.getText().toString();
+        String textTemperature = editTextTemperature.getText().toString();
+        if (textAreometerStrength.matches("")) {
+            Toast.makeText(this,
+                    R.string.strength_correct_exception_blank_field_areometer_strength,
+                    Toast.LENGTH_LONG).show();
+        } else if (textTemperature.matches("")) {
+            Toast.makeText(this,
+                    R.string.strength_correct_exception_blank_field_temperature,
+                    Toast.LENGTH_LONG).show();
+        } else {
+            cursor = moonshineDBHelper
+                    .getCorrectStrengthWithoutRounding(textAreometerStrength, textTemperature);
+            System.out.println(cursor.getCount());
+            if (cursor.getCount() > 0) {
+                cursor.moveToFirst();
+                itemCorrectStrength = cursor.getString(cursor.getColumnIndex("correct_strength"));
+                textViewCorrectStrength.setText(itemCorrectStrength);
+            } else {
+
+            }
+        }
     }
 }
