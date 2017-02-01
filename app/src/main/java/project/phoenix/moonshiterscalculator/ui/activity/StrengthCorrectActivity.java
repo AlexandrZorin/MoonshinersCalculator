@@ -1,6 +1,5 @@
 package project.phoenix.moonshiterscalculator.ui.activity;
 
-import android.content.Context;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -54,24 +53,53 @@ public class StrengthCorrectActivity extends TemplateActivity {
         String textAreometerStrength = editTextAreometerStrength.getText().toString();
         String textTemperature = editTextTemperature.getText().toString();
         if (textAreometerStrength.matches("")) {
-            Toast.makeText(this,
+            Toast.makeText(
+                    this,
                     R.string.strength_correct_exception_blank_field_areometer_strength,
                     Toast.LENGTH_LONG).show();
         } else if (textTemperature.matches("")) {
-            Toast.makeText(this,
+            Toast.makeText(
+                    this,
                     R.string.strength_correct_exception_blank_field_temperature,
                     Toast.LENGTH_LONG).show();
-        } else {
+        }
+
+        if (checkNumberAreometerStrength(textAreometerStrength) &&
+                checkNumberTemperature(textTemperature)) {
             cursor = moonshineDBHelper
                     .getCorrectStrengthWithoutRounding(textAreometerStrength, textTemperature);
-            System.out.println(cursor.getCount());
             if (cursor.getCount() > 0) {
                 cursor.moveToFirst();
                 itemCorrectStrength = cursor.getString(cursor.getColumnIndex("correct_strength"));
                 textViewCorrectStrength.setText(itemCorrectStrength);
-            } else {
-
             }
+        } else if (!checkNumberAreometerStrength(textAreometerStrength) &&
+                checkNumberTemperature(textTemperature)) {
+            Toast.makeText(
+                    this,
+                    "ddd",
+                    Toast.LENGTH_LONG).show();
+        } else if (checkNumberAreometerStrength(textAreometerStrength) &&
+                !checkNumberTemperature(textTemperature)) {
+            Toast.makeText(
+                    this,
+                    "fff",
+                    Toast.LENGTH_LONG).show();
+        } else {
+            Toast.makeText(
+                    this,
+                    "xxx",
+                    Toast.LENGTH_LONG).show();
         }
+    }
+
+    private boolean checkNumberAreometerStrength(String areometerStrength) {
+        double areometerStrengthDouble = Double.parseDouble(areometerStrength);
+        return areometerStrengthDouble % 1 == 0 || areometerStrengthDouble % 1 == 0.5;
+    }
+
+    private boolean checkNumberTemperature(String temperature) {
+        double temperatureDouble = Double.parseDouble(temperature);
+        return temperatureDouble % 1 == 0;
     }
 }
