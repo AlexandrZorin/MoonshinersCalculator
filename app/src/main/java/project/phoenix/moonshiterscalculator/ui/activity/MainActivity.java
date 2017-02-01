@@ -39,8 +39,8 @@ public class MainActivity extends AppCompatActivity {
         sections.add(new Section(getResources().getString(R.string.alcohol_strength_title),
                 getResources().getString(R.string.alcohol_strength_description),
                 R.mipmap.ic_launcher));
-        sections.add(new Section(getResources().getString(R.string.strength_correction_title),
-                getResources().getString(R.string.strength_correction_description),
+        sections.add(new Section(getResources().getString(R.string.strength_correct_title),
+                getResources().getString(R.string.strength_correct_description),
                 R.mipmap.ic_launcher));
         listViewCreate();
     }
