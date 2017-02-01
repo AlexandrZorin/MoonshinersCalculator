@@ -5,24 +5,29 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Показания ареометра"/>
+        android:text="@string/strength_correct_textView_areometer_strength"/>
 
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:inputType="number"
+        android:inputType="numberDecimal"
         android:id="@+id/strength_correct_areometer_strength"/>
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Температура спирта"/>
+        android:text="@string/strength_correct_textView_temperature"/>
 
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:inputType="number"
+        android:inputType="numberDecimal"
         android:id="@+id/strength_correct_temperature"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/strength_correct_textView_strength_correct"/>
 
     <TextView
         android:layout_width="wrap_content"
