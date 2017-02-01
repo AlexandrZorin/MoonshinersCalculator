@@ -16,7 +16,7 @@ public class MoonshineDBHelper extends SQLiteAssetHelper {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
     }
 
-    public Cursor getCorrectStrengthWithoutRounding(String areometerStrength, String temperature) {
+    public Cursor getCorrectStrength(String areometerStrength, String temperature) {
         database = this.getReadableDatabase();
         return database.rawQuery(
                 "SELECT correct_strength " +
@@ -29,10 +29,10 @@ public class MoonshineDBHelper extends SQLiteAssetHelper {
                 new String[]{areometerStrength, temperature});
     }
 
-    public Cursor getCorrectStrengthWithRoundingUp(String areometerStrength, String temperature) {
+    public Cursor getRoundingAreometerStrength(String areometerStrength, String temperature) {
         database = this.getReadableDatabase();
         return database.rawQuery(
-                "SELECT correct_strength " +
+                "SELECT temperature, areometer_strength, correct_strength " +
                 "FROM ",
                 null
         );

@@ -67,7 +67,7 @@ public class StrengthCorrectActivity extends TemplateActivity {
         if (checkNumberAreometerStrength(textAreometerStrength) &&
                 checkNumberTemperature(textTemperature)) {
             cursor = moonshineDBHelper
-                    .getCorrectStrengthWithoutRounding(textAreometerStrength, textTemperature);
+                    .getCorrectStrength(textAreometerStrength, textTemperature);
             if (cursor.getCount() > 0) {
                 cursor.moveToFirst();
                 itemCorrectStrength = cursor.getString(cursor.getColumnIndex("correct_strength"));
