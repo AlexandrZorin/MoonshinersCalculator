@@ -10,6 +10,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
+import java.util.Locale;
 
 import project.phoenix.moonshiterscalculator.R;
 import project.phoenix.moonshiterscalculator.ui.activity.template.TemplateActivity;
@@ -100,7 +101,7 @@ public class StrengthCorrectActivity extends TemplateActivity {
 
                 result = y2x - (((y2 - y) / (y2 - y1)) * (y2x - y1x));
 
-                textViewCorrectStrength.setText(String.valueOf(result));
+                textViewCorrectStrength.setText(String.format(Locale.getDefault(), "%.2f", result));
             }
         } else if (checkNumberAreometerStrength(textAreometerStrength) &&
                 !checkNumberTemperature(textTemperature)) {
