@@ -89,7 +89,6 @@ public class StrengthCorrectActivity extends TemplateActivity {
                 while (!cursor.isAfterLast()) {
                     itemsCorrectStrength.add(cursor.getString(cursor.getColumnIndex("correct_strength")));
                     itemsAreometerStrength.add(cursor.getString(cursor.getColumnIndex("strength")));
-                    itemsTemperature.add(cursor.getString(cursor.getColumnIndex("temperature")));
                     cursor.moveToNext();
                 }
                 double y = Double.parseDouble(textAreometerStrength);
@@ -97,7 +96,6 @@ public class StrengthCorrectActivity extends TemplateActivity {
                 double y1 = Double.parseDouble(itemsAreometerStrength.get(0));
                 double y2x = Double.parseDouble(itemsCorrectStrength.get(1));
                 double y1x = Double.parseDouble(itemsCorrectStrength.get(0));
-                double x = Double.parseDouble(itemsTemperature.get(0));
                 double result;
 
                 result = y2x - (((y2 - y) / (y2 - y1)) * (y2x - y1x));
