@@ -9,6 +9,8 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.util.ArrayList;
+
 import project.phoenix.moonshiterscalculator.R;
 import project.phoenix.moonshiterscalculator.ui.activity.template.TemplateActivity;
 import project.phoenix.moonshiterscalculator.ui.db.MoonshineDBHelper;
@@ -20,8 +22,6 @@ public class StrengthCorrectActivity extends TemplateActivity {
     private EditText editTextTemperature;
     private TextView textViewCorrectStrength;
     private MoonshineDBHelper moonshineDBHelper;
-    private Cursor cursor;
-    private String itemCorrectStrength;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -52,6 +52,11 @@ public class StrengthCorrectActivity extends TemplateActivity {
     private void parserCursorFromDatabase() {
         String textAreometerStrength = editTextAreometerStrength.getText().toString();
         String textTemperature = editTextTemperature.getText().toString();
+        ArrayList<String> itemsCorrectStrength = new ArrayList<>();
+        ArrayList<String> itemsAreometerStrength = new ArrayList<>();
+        ArrayList<String> itemsTemperature = new ArrayList<>();
+        Cursor cursor;
+
         if (textAreometerStrength.matches("")) {
             Toast.makeText(
                     this,
@@ -70,15 +75,35 @@ public class StrengthCorrectActivity extends TemplateActivity {
                     .getCorrectStrength(textAreometerStrength, textTemperature);
             if (cursor.getCount() > 0) {
                 cursor.moveToFirst();
-                itemCorrectStrength = cursor.getString(cursor.getColumnIndex("correct_strength"));
-                textViewCorrectStrength.setText(itemCorrectStrength);
+                itemsCorrectStrength.add(cursor.getString(cursor.getColumnIndex("correct_strength")));
+                textViewCorrectStrength.setText(itemsCorrectStrength.get(0));
+                itemsCorrectStrength.clear();
+                cursor.close();
             }
         } else if (!checkNumberAreometerStrength(textAreometerStrength) &&
                 checkNumberTemperature(textTemperature)) {
-            Toast.makeText(
-                    this,
-                    "ddd",
-                    Toast.LENGTH_LONG).show();
+            cursor = moonshineDBHelper
+                    .getRoundingAreometerStrength(textAreometerStrength, textTemperature);
+            if (cursor.getCount() > 0) {
+                cursor.moveToFirst();
+                while (!cursor.isAfterLast()) {
+                    itemsCorrectStrength.add(cursor.getString(cursor.getColumnIndex("correct_strength")));
+                    itemsAreometerStrength.add(cursor.getString(cursor.getColumnIndex("strength")));
+                    itemsTemperature.add(cursor.getString(cursor.getColumnIndex("temperature")));
+                    cursor.moveToNext();
+                }
+                double y = Double.parseDouble(textAreometerStrength);
+                double y2 = Double.parseDouble(itemsAreometerStrength.get(1));
+                double y1 = Double.parseDouble(itemsAreometerStrength.get(0));
+                double y2x = Double.parseDouble(itemsCorrectStrength.get(1));
+                double y1x = Double.parseDouble(itemsCorrectStrength.get(0));
+                double x = Double.parseDouble(itemsTemperature.get(0));
+                double result;
+
+                result = y2x - (((y2 - y) / (y2 - y1)) * (y2x - y1x));
+
+                textViewCorrectStrength.setText(String.valueOf(result));
+            }
         } else if (checkNumberAreometerStrength(textAreometerStrength) &&
                 !checkNumberTemperature(textTemperature)) {
             Toast.makeText(
