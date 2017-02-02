@@ -93,22 +93,44 @@ public class StrengthCorrectActivity extends TemplateActivity {
                     cursor.moveToNext();
                 }
                 double y = Double.parseDouble(textAreometerStrength);
-                double y2 = Double.parseDouble(itemsAreometerStrength.get(1));
                 double y1 = Double.parseDouble(itemsAreometerStrength.get(0));
-                double y2x = Double.parseDouble(itemsCorrectStrength.get(1));
+                double y2 = Double.parseDouble(itemsAreometerStrength.get(1));
                 double y1x = Double.parseDouble(itemsCorrectStrength.get(0));
+                double y2x = Double.parseDouble(itemsCorrectStrength.get(1));
                 double result;
 
                 result = y2x - (((y2 - y) / (y2 - y1)) * (y2x - y1x));
 
                 textViewCorrectStrength.setText(String.format(Locale.getDefault(), "%.2f", result));
+                itemsCorrectStrength.clear();
+                itemsAreometerStrength.clear();
+                cursor.close();
             }
         } else if (checkNumberAreometerStrength(textAreometerStrength) &&
                 !checkNumberTemperature(textTemperature)) {
-            Toast.makeText(
-                    this,
-                    "fff",
-                    Toast.LENGTH_LONG).show();
+            cursor = moonshineDBHelper
+                    .getRoundingTemperature(textAreometerStrength, textTemperature);
+            if (cursor.getCount() > 0) {
+                cursor.moveToFirst();
+                while (!cursor.isAfterLast()) {
+                    itemsCorrectStrength.add(cursor.getString(cursor.getColumnIndex("correct_strength")));
+                    itemsTemperature.add(cursor.getString(cursor.getColumnIndex("temperature")));
+                    cursor.moveToNext();
+                }
+                double x = Double.parseDouble(textTemperature);
+                double x1 = Double.parseDouble(itemsTemperature.get(0));
+                double x2 = Double.parseDouble(itemsTemperature.get(1));
+                double x1y = Double.parseDouble(itemsCorrectStrength.get(0));
+                double x2y = Double.parseDouble(itemsCorrectStrength.get(1));
+                double result;
+
+                result = x1y - (((x1 - x) / (x1 - x2)) * (x1y - x2y));
+
+                textViewCorrectStrength.setText(String.format(Locale.getDefault(), "%.2f", result));
+                itemsCorrectStrength.clear();
+                itemsTemperature.clear();
+                cursor.close();
+            }
         } else {
             Toast.makeText(
                     this,
