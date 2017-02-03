@@ -1,4 +1,4 @@
-package project.phoenix.moonshiterscalculator.ui.activity;
+package project.phoenix.moonshiterscalculator.ui.activity.strengthcorrect;
 
 import android.database.Cursor;
 import android.os.Bundle;
@@ -132,10 +132,18 @@ public class StrengthCorrectActivity extends TemplateActivity {
                 cursor.close();
             }
         } else {
-            Toast.makeText(
-                    this,
-                    "xxx",
-                    Toast.LENGTH_LONG).show();
+            cursor = moonshineDBHelper
+                    .getRoundingAll(textAreometerStrength, textTemperature);
+            if (cursor.getCount() > 0) {
+                cursor.moveToFirst();
+                while (!cursor.isAfterLast()) {
+                    itemsCorrectStrength.add(cursor.getString(cursor.getColumnIndex("correct_strength")));
+                    itemsAreometerStrength.add(cursor.getString(cursor.getColumnIndex("strength")));
+                    itemsTemperature.add(cursor.getString(cursor.getColumnIndex("temperature")));
+                    cursor.moveToNext();
+                }
+
+            }
         }
     }
 

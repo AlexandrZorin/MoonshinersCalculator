@@ -13,6 +13,7 @@ import android.widget.ListView;
 
 import java.util.ArrayList;
 
+import project.phoenix.moonshiterscalculator.ui.activity.strengthcorrect.StrengthCorrectActivity;
 import project.phoenix.moonshiterscalculator.ui.adapter.MoonshineArrayAdapter;
 import project.phoenix.moonshiterscalculator.R;
 import project.phoenix.moonshiterscalculator.ui.adapter.Section;
