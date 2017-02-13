@@ -9,7 +9,8 @@ import java.util.Locale;
 import project.phoenix.moonshiterscalculator.ui.db.MoonshineDBHelper;
 
 public class DeterminationResultCorrectStrength {
-    public String initCursor(String areometerStrengh, String temperature, Context context) {
+    private double result;
+    public String determResult(String areometerStrengh, String temperature, Context context) {
         MoonshineDBHelper moonshineDBHelper = new MoonshineDBHelper(context);
         ArrayList<String> itemsCorrectStrength = new ArrayList<>();
         ArrayList<String> itemsAreometerStrength = new ArrayList<>();
@@ -21,7 +22,8 @@ public class DeterminationResultCorrectStrength {
                     .getCorrectStrength(areometerStrengh, temperature);
             if (cursor.getCount() > 0) {
                 cursor.moveToFirst();
-                itemsCorrectStrength.add(cursor.getString(cursor.getColumnIndex("correct_strength")));
+                itemsCorrectStrength
+                        .add(cursor.getString(cursor.getColumnIndex("correct_strength")));
                 cursor.close();
                 return itemsCorrectStrength.get(0);
             }
@@ -33,21 +35,22 @@ public class DeterminationResultCorrectStrength {
             if (cursor.getCount() > 0) {
                 cursor.moveToFirst();
                 while (!cursor.isAfterLast()) {
-                    itemsCorrectStrength.add(cursor.getString(cursor.getColumnIndex("correct_strength")));
-                    itemsAreometerStrength.add(cursor.getString(cursor.getColumnIndex("strength")));
+                    itemsCorrectStrength
+                            .add(cursor.getString(cursor.getColumnIndex("correct_strength")));
+                    itemsAreometerStrength
+                            .add(cursor.getString(cursor.getColumnIndex("strength")));
                     cursor.moveToNext();
                 }
-                double y = Double.parseDouble(areometerStrengh);
-                double y1 = Double.parseDouble(itemsAreometerStrength.get(0));
-                double y2 = Double.parseDouble(itemsAreometerStrength.get(1));
-                double y1x = Double.parseDouble(itemsCorrectStrength.get(0));
-                double y2x = Double.parseDouble(itemsCorrectStrength.get(1));
-                double result;
-
-                result = y2x - (((y2 - y) / (y2 - y1)) * (y2x - y1x));
-
+                Math math = new Math(
+                        Double.parseDouble(temperature),
+                        Double.parseDouble(itemsAreometerStrength.get(0)),
+                        Double.parseDouble(itemsAreometerStrength.get(1)),
+                        Double.parseDouble(itemsCorrectStrength.get(0)),
+                        Double.parseDouble(itemsCorrectStrength.get(1))
+                );
+                result = math.mathRoundingAreometerStrength();
                 cursor.close();
-                return String.format(Locale.getDefault(), "%.2f", result);
+                return String.format(Locale.US, "%.2f", result);
             }
             return "cursor = 0";
         } else if (checkNumberAreometerStrength(areometerStrengh) &&
@@ -57,21 +60,22 @@ public class DeterminationResultCorrectStrength {
             if (cursor.getCount() > 0) {
                 cursor.moveToFirst();
                 while (!cursor.isAfterLast()) {
-                    itemsCorrectStrength.add(cursor.getString(cursor.getColumnIndex("correct_strength")));
-                    itemsTemperature.add(cursor.getString(cursor.getColumnIndex("temperature")));
+                    itemsCorrectStrength
+                            .add(cursor.getString(cursor.getColumnIndex("correct_strength")));
+                    itemsTemperature
+                            .add(cursor.getString(cursor.getColumnIndex("temperature")));
                     cursor.moveToNext();
                 }
-                double x = Double.parseDouble(temperature);
-                double x1 = Double.parseDouble(itemsTemperature.get(0));
-                double x2 = Double.parseDouble(itemsTemperature.get(1));
-                double x1y = Double.parseDouble(itemsCorrectStrength.get(0));
-                double x2y = Double.parseDouble(itemsCorrectStrength.get(1));
-                double result;
-
-                result = x1y - (((x1 - x) / (x1 - x2)) * (x1y - x2y));
-
+                Math math = new Math(
+                        Double.parseDouble(temperature),
+                        Double.parseDouble(itemsTemperature.get(0)),
+                        Double.parseDouble(itemsTemperature.get(1)),
+                        Double.parseDouble(itemsCorrectStrength.get(0)),
+                        Double.parseDouble(itemsCorrectStrength.get(1))
+                        );
+                result = math.mathRoundingTemperature();
                 cursor.close();
-                return String.format(Locale.getDefault(), "%.2f", result);
+                return String.format(Locale.US, "%.2f", result);
             }
             return "cursor = 0";
         } else {
@@ -80,9 +84,12 @@ public class DeterminationResultCorrectStrength {
             if (cursor.getCount() > 0) {
                 cursor.moveToFirst();
                 while (!cursor.isAfterLast()) {
-                    itemsCorrectStrength.add(cursor.getString(cursor.getColumnIndex("correct_strength")));
-                    itemsAreometerStrength.add(cursor.getString(cursor.getColumnIndex("strength")));
-                    itemsTemperature.add(cursor.getString(cursor.getColumnIndex("temperature")));
+                    itemsCorrectStrength
+                            .add(cursor.getString(cursor.getColumnIndex("correct_strength")));
+                    itemsAreometerStrength
+                            .add(cursor.getString(cursor.getColumnIndex("strength")));
+                    itemsTemperature
+                            .add(cursor.getString(cursor.getColumnIndex("temperature")));
                     cursor.moveToNext();
                 }
                 cursor.close();
