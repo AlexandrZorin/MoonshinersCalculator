@@ -1,17 +1,20 @@
-package project.phoenix.moonshiterscalculator.ui.db;
+package project.phoenix.moonshiterscalculator.ui.activity.strengthcorrect;
 
+import android.content.Context;
 import android.database.Cursor;
 
 import java.util.ArrayList;
+import java.util.Locale;
 
-public class MoonshineDBCursor {
-    private MoonshineDBHelper moonshineDBHelper;
-    private Cursor cursor;
-    private ArrayList<String> itemsCorrectStrength;
-    private ArrayList<String> itemsAreometerStrength;
-    private ArrayList<String> itemsTemperature;
+import project.phoenix.moonshiterscalculator.ui.db.MoonshineDBHelper;
 
-    public void initCursor(String areometerStrengh, String temperature) {
+public class InitCorrectStrengthDBCursor {
+    public String initCursor(String areometerStrengh, String temperature, Context context) {
+        MoonshineDBHelper moonshineDBHelper = new MoonshineDBHelper(context);
+        ArrayList<String> itemsCorrectStrength = new ArrayList<>();
+        ArrayList<String> itemsAreometerStrength = new ArrayList<>();
+        ArrayList<String> itemsTemperature = new ArrayList<>();
+        Cursor cursor;
         if (checkNumberAreometerStrength(areometerStrengh) &&
                 checkNumberTemperature(temperature)) {
             cursor = moonshineDBHelper
@@ -19,10 +22,12 @@ public class MoonshineDBCursor {
             if (cursor.getCount() > 0) {
                 cursor.moveToFirst();
                 itemsCorrectStrength.add(cursor.getString(cursor.getColumnIndex("correct_strength")));
-                //textViewCorrectStrength.setText(itemsCorrectStrength.get(0));
-                itemsCorrectStrength.clear();
                 cursor.close();
+                //textViewCorrectStrength.setText(itemsCorrectStrength.get(0));
+                //itemsCorrectStrength.clear();
+                return itemsCorrectStrength.get(0);
             }
+            return "cursor = 0";
         } else if (!checkNumberAreometerStrength(areometerStrengh) &&
                 checkNumberTemperature(temperature)) {
             cursor = moonshineDBHelper
@@ -45,7 +50,9 @@ public class MoonshineDBCursor {
 
                 //textViewCorrectStrength.setText(String.format(Locale.getDefault(), "%.2f", result));
                 cursor.close();
+                return String.format(Locale.getDefault(), "%.2f", result);
             }
+            return "cursor = 0";
         } else if (checkNumberAreometerStrength(areometerStrengh) &&
                 !checkNumberTemperature(temperature)) {
             cursor = moonshineDBHelper
@@ -67,10 +74,12 @@ public class MoonshineDBCursor {
                 result = x1y - (((x1 - x) / (x1 - x2)) * (x1y - x2y));
 
                 //textViewCorrectStrength.setText(String.format(Locale.getDefault(), "%.2f", result));
-                itemsCorrectStrength.clear();
-                itemsTemperature.clear();
+                //itemsCorrectStrength.clear();
+                //itemsTemperature.clear();
                 cursor.close();
+                return String.format(Locale.getDefault(), "%.2f", result);
             }
+            return "cursor = 0";
         } else {
             cursor = moonshineDBHelper
                     .getRoundingAll(areometerStrengh, temperature);
@@ -82,8 +91,8 @@ public class MoonshineDBCursor {
                     itemsTemperature.add(cursor.getString(cursor.getColumnIndex("temperature")));
                     cursor.moveToNext();
                 }
-
             }
+            return "хз";
         }
     }
 
