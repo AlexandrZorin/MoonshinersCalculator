@@ -23,7 +23,9 @@ public class Math {
         return x1y - (((x1 - x) / (x1 - x2)) * (x1y - x2y));
     }
 
-    public double mathRoundingAll() {
-        return 0;
+    public double mathRoundingAll(double x1y2, double x2y2) {
+        double a = x1y2 - (((x1 - x) / (x1 - x2)) * (x1y2 - x2y2));
+        double b = x1y - (((x1 - x) / (x1 - x2)) * (x1y - x2y));
+        return a - (((x2 - x) / (x2 - x1)) * (a - b));
     }
 }
