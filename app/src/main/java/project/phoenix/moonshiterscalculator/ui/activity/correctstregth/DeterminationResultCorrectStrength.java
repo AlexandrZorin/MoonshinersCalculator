@@ -9,17 +9,17 @@ import java.util.Locale;
 import project.phoenix.moonshiterscalculator.ui.db.MoonshineDBHelper;
 
 public class DeterminationResultCorrectStrength {
-    public String determResult(String areometerStrengh, String temperature, Context context) {
+    public String determResult(String areometerStrength, String temperature, Context context) {
         MoonshineDBHelper moonshineDBHelper = new MoonshineDBHelper(context);
         ArrayList<String> itemsCorrectStrength = new ArrayList<>();
         ArrayList<String> itemsAreometerStrength = new ArrayList<>();
         ArrayList<String> itemsTemperature = new ArrayList<>();
         Cursor cursor;
         double result;
-        if (checkNumberAreometerStrength(areometerStrengh) &&
+        if (checkNumberAreometerStrength(areometerStrength) &&
                 checkNumberTemperature(temperature)) {
             cursor = moonshineDBHelper
-                    .getCorrectStrength(areometerStrengh, temperature);
+                    .getCorrectStrength(areometerStrength, temperature);
             if (cursor.getCount() > 0) {
                 cursor.moveToFirst();
                 itemsCorrectStrength
@@ -28,10 +28,10 @@ public class DeterminationResultCorrectStrength {
                 return itemsCorrectStrength.get(0);
             }
             return "cursor = 0";
-        } else if (!checkNumberAreometerStrength(areometerStrengh) &&
+        } else if (!checkNumberAreometerStrength(areometerStrength) &&
                 checkNumberTemperature(temperature)) {
             cursor = moonshineDBHelper
-                    .getRoundingAreometerStrength(areometerStrengh, temperature);
+                    .getRoundingAreometerStrength(areometerStrength, temperature);
             if (cursor.getCount() > 0) {
                 cursor.moveToFirst();
                 while (!cursor.isAfterLast()) {
@@ -53,10 +53,10 @@ public class DeterminationResultCorrectStrength {
                 return String.format(Locale.US, "%.2f", result);
             }
             return "cursor = 0";
-        } else if (checkNumberAreometerStrength(areometerStrengh) &&
+        } else if (checkNumberAreometerStrength(areometerStrength) &&
                 !checkNumberTemperature(temperature)) {
             cursor = moonshineDBHelper
-                    .getRoundingTemperature(areometerStrengh, temperature);
+                    .getRoundingTemperature(areometerStrength, temperature);
             if (cursor.getCount() > 0) {
                 cursor.moveToFirst();
                 while (!cursor.isAfterLast()) {
@@ -80,7 +80,7 @@ public class DeterminationResultCorrectStrength {
             return "cursor = 0";
         } else {
             cursor = moonshineDBHelper
-                    .getRoundingAll(areometerStrengh, temperature);
+                    .getRoundingAll(areometerStrength, temperature);
             if (cursor.getCount() > 0) {
                 cursor.moveToFirst();
                 while (!cursor.isAfterLast()) {
