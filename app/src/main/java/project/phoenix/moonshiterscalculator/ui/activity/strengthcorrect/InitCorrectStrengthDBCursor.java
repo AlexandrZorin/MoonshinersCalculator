@@ -23,8 +23,6 @@ public class InitCorrectStrengthDBCursor {
                 cursor.moveToFirst();
                 itemsCorrectStrength.add(cursor.getString(cursor.getColumnIndex("correct_strength")));
                 cursor.close();
-                //textViewCorrectStrength.setText(itemsCorrectStrength.get(0));
-                //itemsCorrectStrength.clear();
                 return itemsCorrectStrength.get(0);
             }
             return "cursor = 0";
@@ -48,7 +46,6 @@ public class InitCorrectStrengthDBCursor {
 
                 result = y2x - (((y2 - y) / (y2 - y1)) * (y2x - y1x));
 
-                //textViewCorrectStrength.setText(String.format(Locale.getDefault(), "%.2f", result));
                 cursor.close();
                 return String.format(Locale.getDefault(), "%.2f", result);
             }
@@ -73,9 +70,6 @@ public class InitCorrectStrengthDBCursor {
 
                 result = x1y - (((x1 - x) / (x1 - x2)) * (x1y - x2y));
 
-                //textViewCorrectStrength.setText(String.format(Locale.getDefault(), "%.2f", result));
-                //itemsCorrectStrength.clear();
-                //itemsTemperature.clear();
                 cursor.close();
                 return String.format(Locale.getDefault(), "%.2f", result);
             }
