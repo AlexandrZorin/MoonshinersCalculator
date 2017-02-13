@@ -92,9 +92,16 @@ public class DeterminationResultCorrectStrength {
                             .add(cursor.getString(cursor.getColumnIndex("temperature")));
                     cursor.moveToNext();
                 }
+                Math math = new Math(
+                        Double.parseDouble(temperature),
+                        Double.parseDouble(itemsTemperature.get(0)),
+                        Double.parseDouble(itemsTemperature.get(1)),
+                        Double.parseDouble(itemsCorrectStrength.get(0)),
+                        Double.parseDouble(itemsCorrectStrength.get(1))
+                );
                 cursor.close();
             }
-            return "хз";
+            return "cursor = 0";
         }
     }
 
