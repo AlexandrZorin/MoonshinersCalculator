@@ -30,7 +30,7 @@
             android:noHistory="true"
             android:label="@string/alcohol_strength_title" />
         <activity
-            android:name=".ui.activity.strengthcorrect.StrengthCorrectActivity"
+            android:name=".ui.activity.strengthcorrect.CorrectStrengthActivity"
             android:noHistory="true"
             android:label="@string/strength_correct_title" />
     </application>
