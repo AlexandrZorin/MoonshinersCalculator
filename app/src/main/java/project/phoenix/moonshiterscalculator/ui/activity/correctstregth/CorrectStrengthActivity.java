@@ -27,7 +27,7 @@ public class CorrectStrengthActivity extends TemplateActivity {
         buttonResult.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                parserCursorFromDatabase();
+                parserStringForResources();
             }
         });
     }
@@ -43,10 +43,11 @@ public class CorrectStrengthActivity extends TemplateActivity {
                 findViewById(R.id.strength_correct);
     }
 
-    private void parserCursorFromDatabase() {
+    private void parserStringForResources() {
         String textAreometerStrength = editTextAreometerStrength.getText().toString();
         String textTemperature = editTextTemperature.getText().toString();
-        InitCorrectStrengthDBCursor initCorrectStrengthDBCursor = new InitCorrectStrengthDBCursor();
+        DeterminationResultCorrectStrength determinationResultCorrectStrength =
+                new DeterminationResultCorrectStrength();
 
         if (textAreometerStrength.matches("")) {
             Toast.makeText(
@@ -60,8 +61,8 @@ public class CorrectStrengthActivity extends TemplateActivity {
                     Toast.LENGTH_LONG).show();
         }
 
-        String textResult = initCorrectStrengthDBCursor
-                .initCursor(textAreometerStrength, textTemperature, this);
+        String textResult = determinationResultCorrectStrength
+                .determResult(textAreometerStrength, textTemperature, this);
         textViewCorrectStrength.setText(textResult);
     }
 }
