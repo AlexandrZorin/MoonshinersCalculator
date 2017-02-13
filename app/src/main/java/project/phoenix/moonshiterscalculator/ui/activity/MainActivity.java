@@ -13,7 +13,7 @@ import android.widget.ListView;
 
 import java.util.ArrayList;
 
-import project.phoenix.moonshiterscalculator.ui.activity.strengthcorrect.StrengthCorrectActivity;
+import project.phoenix.moonshiterscalculator.ui.activity.strengthcorrect.CorrectStrengthActivity;
 import project.phoenix.moonshiterscalculator.ui.adapter.MoonshineArrayAdapter;
 import project.phoenix.moonshiterscalculator.R;
 import project.phoenix.moonshiterscalculator.ui.adapter.Section;
@@ -74,7 +74,7 @@ public class MainActivity extends AppCompatActivity {
             Intent intent = new Intent(MainActivity.this, AlcoholStrengthActivity.class);
             startActivity(intent);
         } else if (position == 3) {
-            Intent intent = new Intent(MainActivity.this, StrengthCorrectActivity.class);
+            Intent intent = new Intent(MainActivity.this, CorrectStrengthActivity.class);
             startActivity(intent);
         }
     }
