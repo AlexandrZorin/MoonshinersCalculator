@@ -9,13 +9,13 @@ import java.util.Locale;
 import project.phoenix.moonshiterscalculator.ui.db.MoonshineDBHelper;
 
 public class DeterminationResultCorrectStrength {
-    private double result;
     public String determResult(String areometerStrengh, String temperature, Context context) {
         MoonshineDBHelper moonshineDBHelper = new MoonshineDBHelper(context);
         ArrayList<String> itemsCorrectStrength = new ArrayList<>();
         ArrayList<String> itemsAreometerStrength = new ArrayList<>();
         ArrayList<String> itemsTemperature = new ArrayList<>();
         Cursor cursor;
+        double result;
         if (checkNumberAreometerStrength(areometerStrengh) &&
                 checkNumberTemperature(temperature)) {
             cursor = moonshineDBHelper
@@ -35,10 +35,10 @@ public class DeterminationResultCorrectStrength {
             if (cursor.getCount() > 0) {
                 cursor.moveToFirst();
                 while (!cursor.isAfterLast()) {
-                    itemsCorrectStrength
-                            .add(cursor.getString(cursor.getColumnIndex("correct_strength")));
                     itemsAreometerStrength
                             .add(cursor.getString(cursor.getColumnIndex("strength")));
+                    itemsCorrectStrength
+                            .add(cursor.getString(cursor.getColumnIndex("correct_strength")));
                     cursor.moveToNext();
                 }
                 Math math = new Math(
@@ -60,10 +60,10 @@ public class DeterminationResultCorrectStrength {
             if (cursor.getCount() > 0) {
                 cursor.moveToFirst();
                 while (!cursor.isAfterLast()) {
-                    itemsCorrectStrength
-                            .add(cursor.getString(cursor.getColumnIndex("correct_strength")));
                     itemsTemperature
                             .add(cursor.getString(cursor.getColumnIndex("temperature")));
+                    itemsCorrectStrength
+                            .add(cursor.getString(cursor.getColumnIndex("correct_strength")));
                     cursor.moveToNext();
                 }
                 Math math = new Math(
