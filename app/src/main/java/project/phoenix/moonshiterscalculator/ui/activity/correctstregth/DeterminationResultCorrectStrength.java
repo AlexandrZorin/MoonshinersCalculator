@@ -1,4 +1,4 @@
-package project.phoenix.moonshiterscalculator.ui.activity.strengthcorrect;
+package project.phoenix.moonshiterscalculator.ui.activity.correctstregth;
 
 import android.content.Context;
 import android.database.Cursor;
@@ -8,7 +8,7 @@ import java.util.Locale;
 
 import project.phoenix.moonshiterscalculator.ui.db.MoonshineDBHelper;
 
-public class InitCorrectStrengthDBCursor {
+public class DeterminationResultCorrectStrength {
     public String initCursor(String areometerStrengh, String temperature, Context context) {
         MoonshineDBHelper moonshineDBHelper = new MoonshineDBHelper(context);
         ArrayList<String> itemsCorrectStrength = new ArrayList<>();
@@ -85,6 +85,7 @@ public class InitCorrectStrengthDBCursor {
                     itemsTemperature.add(cursor.getString(cursor.getColumnIndex("temperature")));
                     cursor.moveToNext();
                 }
+                cursor.close();
             }
             return "хз";
         }

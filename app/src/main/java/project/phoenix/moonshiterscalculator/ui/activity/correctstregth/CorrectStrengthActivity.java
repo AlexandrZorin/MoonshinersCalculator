@@ -1,4 +1,4 @@
-package project.phoenix.moonshiterscalculator.ui.activity.strengthcorrect;
+package project.phoenix.moonshiterscalculator.ui.activity.correctstregth;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;

@@ -1,4 +1,4 @@
-package project.phoenix.moonshiterscalculator.ui.activity.strengthcorrect;
+package project.phoenix.moonshiterscalculator.ui.activity.correctstregth;
 
 public class Math {
     double x;
