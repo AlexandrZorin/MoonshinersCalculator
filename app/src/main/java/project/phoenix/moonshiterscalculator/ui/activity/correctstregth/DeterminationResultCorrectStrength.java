@@ -14,6 +14,7 @@ public class DeterminationResultCorrectStrength {
         ArrayList<String> itemsCorrectStrength = new ArrayList<>();
         ArrayList<String> itemsAreometerStrength = new ArrayList<>();
         ArrayList<String> itemsTemperature = new ArrayList<>();
+        Formulas formulas = new Formulas();
         Cursor cursor;
         double result;
         if (checkNumberAreometerStrength(areometerStrength) &&
@@ -41,14 +42,13 @@ public class DeterminationResultCorrectStrength {
                             .add(cursor.getString(cursor.getColumnIndex("correct_strength")));
                     cursor.moveToNext();
                 }
-                Math math = new Math(
+                result = formulas.formulaRoundingAreometerStrength(
                         Double.parseDouble(temperature),
                         Double.parseDouble(itemsAreometerStrength.get(0)),
                         Double.parseDouble(itemsAreometerStrength.get(1)),
                         Double.parseDouble(itemsCorrectStrength.get(0)),
                         Double.parseDouble(itemsCorrectStrength.get(1))
                 );
-                result = math.mathRoundingAreometerStrength();
                 cursor.close();
                 return String.format(Locale.US, "%.2f", result);
             }
@@ -66,14 +66,13 @@ public class DeterminationResultCorrectStrength {
                             .add(cursor.getString(cursor.getColumnIndex("correct_strength")));
                     cursor.moveToNext();
                 }
-                Math math = new Math(
+                result = formulas.formulaRoundingTemperature(
                         Double.parseDouble(temperature),
                         Double.parseDouble(itemsTemperature.get(0)),
                         Double.parseDouble(itemsTemperature.get(1)),
                         Double.parseDouble(itemsCorrectStrength.get(0)),
                         Double.parseDouble(itemsCorrectStrength.get(1))
-                        );
-                result = math.mathRoundingTemperature();
+                );
                 cursor.close();
                 return String.format(Locale.US, "%.2f", result);
             }
@@ -92,13 +91,6 @@ public class DeterminationResultCorrectStrength {
                             .add(cursor.getString(cursor.getColumnIndex("temperature")));
                     cursor.moveToNext();
                 }
-                Math math = new Math(
-                        Double.parseDouble(temperature),
-                        Double.parseDouble(itemsTemperature.get(0)),
-                        Double.parseDouble(itemsTemperature.get(1)),
-                        Double.parseDouble(itemsCorrectStrength.get(0)),
-                        Double.parseDouble(itemsCorrectStrength.get(1))
-                );
                 cursor.close();
             }
             return "cursor = 0";
