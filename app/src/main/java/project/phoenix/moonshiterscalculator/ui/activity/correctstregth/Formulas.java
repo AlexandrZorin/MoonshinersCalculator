@@ -6,8 +6,8 @@ public class Formulas {
         return x2y - (((x2 - x) / (x2 - x1)) * (x2y - x1y));
     }
 
-    public double formulaRoundingTemperature(double x, double x1, double x2, double x1y, double x2y) {
-        return x1y - (((x1 - x) / (x1 - x2)) * (x1y - x2y));
+    public double formulaRoundingTemperature(double temperature, double temperatureRoundDown, double temperatureRoundUp, double correctStrengthRoundDown, double correctStrengthRoundUp) {
+        return correctStrengthRoundDown - (((temperatureRoundDown - temperature) / (temperatureRoundDown - temperatureRoundUp)) * (correctStrengthRoundDown - correctStrengthRoundUp));
     }
 
     public double formulaRoundingAll(double x, double x1, double x2, double x1y, double x2y, double x1y2, double x2y2) {
