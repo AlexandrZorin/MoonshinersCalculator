@@ -3,19 +3,12 @@ package project.phoenix.moonshiterscalculator.ui.activity.correctstregth;
 import android.content.Context;
 import android.database.Cursor;
 
-import java.util.ArrayList;
 import java.util.Locale;
 
 import project.phoenix.moonshiterscalculator.ui.db.MoonshineDBHelper;
 
 public class DeterminationResultCorrectStrength {
     public String determResult(String areometerStrength, String temperature, Context context) {
-        MoonshineDBHelper moonshineDBHelper = new MoonshineDBHelper(context);
-        ArrayList<String> itemsCorrectStrength = new ArrayList<>();
-        ArrayList<String> itemsAreometerStrength = new ArrayList<>();
-        ArrayList<String> itemsTemperature = new ArrayList<>();
-        Cursor cursor;
-
         if (checkNumberAreometerStrength(areometerStrength) &&
                 checkNumberTemperature(temperature)) {
             return determCorrectStrengthWithoutRound(
