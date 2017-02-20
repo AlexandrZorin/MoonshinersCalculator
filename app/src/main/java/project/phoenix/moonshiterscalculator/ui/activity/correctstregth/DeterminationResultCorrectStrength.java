@@ -11,7 +11,6 @@ import project.phoenix.moonshiterscalculator.ui.db.MoonshineDBHelper;
 public class DeterminationResultCorrectStrength {
     public String determResult(String areometerStrength, String temperature, Context context) {
         MoonshineDBHelper moonshineDBHelper = new MoonshineDBHelper(context);
-        Formulas formulas = new Formulas();
         ArrayList<String> itemsCorrectStrength = new ArrayList<>();
         ArrayList<String> itemsAreometerStrength = new ArrayList<>();
         ArrayList<String> itemsTemperature = new ArrayList<>();
@@ -26,29 +25,11 @@ public class DeterminationResultCorrectStrength {
             );
         } else if (!checkNumberAreometerStrength(areometerStrength) &&
                 checkNumberTemperature(temperature)) {
-            double result;
-            cursor = moonshineDBHelper
-                    .getRoundingAreometerStrength(areometerStrength, temperature);
-            if (cursor.getCount() > 0) {
-                cursor.moveToFirst();
-                while (!cursor.isAfterLast()) {
-                    itemsAreometerStrength
-                            .add(cursor.getString(cursor.getColumnIndex("strength")));
-                    itemsCorrectStrength
-                            .add(cursor.getString(cursor.getColumnIndex("correct_strength")));
-                    cursor.moveToNext();
-                }
-                result = formulas.formulaRoundingAreometerStrength(
-                        Double.parseDouble(temperature),
-                        Double.parseDouble(itemsAreometerStrength.get(0)),
-                        Double.parseDouble(itemsAreometerStrength.get(1)),
-                        Double.parseDouble(itemsCorrectStrength.get(0)),
-                        Double.parseDouble(itemsCorrectStrength.get(1))
-                );
-                cursor.close();
-                return String.format(Locale.US, "%.2f", result);
-            }
-            return "cursor = 0";
+            return String.format(Locale.US, "%.2f", determRoundAreometerStrength(
+                    temperature,
+                    areometerStrength,
+                    context
+                ));
         } else if (checkNumberAreometerStrength(areometerStrength) &&
                 !checkNumberTemperature(temperature)) {
             return String.format(Locale.US, "%.2f", determRoundTemperature(
@@ -57,22 +38,11 @@ public class DeterminationResultCorrectStrength {
                     context
             ));
         } else {
-            cursor = moonshineDBHelper
-                    .getRoundingAll(areometerStrength, temperature);
-            if (cursor.getCount() > 0) {
-                cursor.moveToFirst();
-                while (!cursor.isAfterLast()) {
-                    itemsCorrectStrength
-                            .add(cursor.getString(cursor.getColumnIndex("correct_strength")));
-                    itemsAreometerStrength
-                            .add(cursor.getString(cursor.getColumnIndex("strength")));
-                    itemsTemperature
-                            .add(cursor.getString(cursor.getColumnIndex("temperature")));
-                    cursor.moveToNext();
-                }
-                cursor.close();
-            }
-            return "cursor = 0";
+            return String.format(Locale.US, "%.2f", determRoundAll(
+                    temperature,
+                    areometerStrength,
+                    context
+            ));
         }
     }
 
@@ -87,11 +57,15 @@ public class DeterminationResultCorrectStrength {
     }
 
     private String areometerStrengthRoundUp(String areometerStrength) {
-        return "";
+        double doubleAreometerStrength = Double.parseDouble(areometerStrength);
+        double result = Math.ceil(doubleAreometerStrength * 2) / 2;
+        return String.valueOf(result);
     }
 
     private String areometerStrengthRoundDown(String areometerStrength) {
-        return "";
+        double doubleAreometerStrength = Double.parseDouble(areometerStrength);
+        double result = Math.floor(doubleAreometerStrength * 2) / 2;
+        return String.valueOf(result);
     }
 
     private String temperatureRoundUp(String temperature) {
@@ -119,6 +93,48 @@ public class DeterminationResultCorrectStrength {
         return cursorCorrectStrength;
     }
 
+    private double determRoundAreometerStrength
+            (String temperature, String areometerStrength, Context context) {
+        String cursorAreometerStrengthRoundUp = "";
+        String cursorAreometerStrengthRoundDown = "";
+        String cursorCorrectStrengthRoundUp = "";
+        String cursorCorrectStrengthRoundDown = "";
+        MoonshineDBHelper moonshineDBHelper = new MoonshineDBHelper(context);
+        Formulas formulas = new Formulas();
+        Cursor cursor;
+        double result;
+
+        cursor = moonshineDBHelper
+                .getCorrectStrength(areometerStrengthRoundUp(areometerStrength),
+                        temperature);
+        if (cursor.getCount() > 0) {
+            cursor.moveToFirst();
+            cursorCorrectStrengthRoundUp = cursor
+                    .getString(cursor.getColumnIndex("correct_strength"));
+            cursorAreometerStrengthRoundUp = cursor
+                    .getString(cursor.getColumnIndex("strength"));
+        }
+        cursor = moonshineDBHelper
+                .getCorrectStrength(areometerStrengthRoundDown(areometerStrength),
+                        temperature);
+        if (cursor.getCount() > 0) {
+            cursor.moveToFirst();
+            cursorCorrectStrengthRoundDown = cursor
+                    .getString(cursor.getColumnIndex("correct_strength"));
+            cursorAreometerStrengthRoundDown = cursor
+                    .getString(cursor.getColumnIndex("strength"));
+        }
+        result = formulas.formulaRoundingAreometerStrength(
+                Double.parseDouble(areometerStrength),
+                Double.parseDouble(cursorAreometerStrengthRoundDown),
+                Double.parseDouble(cursorAreometerStrengthRoundUp),
+                Double.parseDouble(cursorCorrectStrengthRoundDown),
+                Double.parseDouble(cursorCorrectStrengthRoundUp)
+        );
+        cursor.close();
+        return result;
+    }
+
     private double determRoundTemperature
             (String temperature, String areometerStrength, Context context) {
         String cursorTemperatureRoundUp = "";
@@ -131,7 +147,8 @@ public class DeterminationResultCorrectStrength {
         double result;
 
         cursor = moonshineDBHelper
-                .getCorrectStrength(areometerStrength, temperatureRoundUp(temperature));
+                .getCorrectStrength(areometerStrength,
+                        temperatureRoundUp(temperature));
         if (cursor.getCount() > 0) {
             cursor.moveToFirst();
             cursorCorrectStrengthRoundUp = cursor
@@ -140,13 +157,15 @@ public class DeterminationResultCorrectStrength {
                     .getString(cursor.getColumnIndex("temperature"));
         }
         cursor = moonshineDBHelper
-                .getCorrectStrength(areometerStrength, temperatureRoundDown(temperature));
+                .getCorrectStrength(areometerStrength,
+                        temperatureRoundDown(temperature));
         if (cursor.getCount() > 0) {
             cursor.moveToFirst();
             cursorCorrectStrengthRoundDown = cursor
                     .getString(cursor.getColumnIndex("correct_strength"));
             cursorTemperatureRoundDown = cursor
                     .getString(cursor.getColumnIndex("temperature"));
+            System.out.println(cursorTemperatureRoundDown);
         }
         result = formulas.formulaRoundingTemperature(
                 Double.parseDouble(temperature),
@@ -154,6 +173,77 @@ public class DeterminationResultCorrectStrength {
                 Double.parseDouble(cursorTemperatureRoundUp),
                 Double.parseDouble(cursorCorrectStrengthRoundDown),
                 Double.parseDouble(cursorCorrectStrengthRoundUp)
+        );
+        cursor.close();
+        return result;
+    }
+
+    private double determRoundAll
+            (String temperature, String areometerStrength, Context context) {
+        String cursorTemperatureRoundUp = "";
+        String cursorTemperatureRoundDown = "";
+        String cursorAreometerStrengthRoundUp = "";
+        String cursorAreometerStrengthRoundDown = "";
+        String cursorCorrectStrengthArStrUpTempUp = "";
+        String cursorCorrectStrengthArStrDownTempDown = "";
+        String cursorCorrectStrengthArStrUpTempDown = "";
+        String cursorCorrectStrengthArStrDownTempUp = "";
+        MoonshineDBHelper moonshineDBHelper = new MoonshineDBHelper(context);
+        Formulas formulas = new Formulas();
+        Cursor cursor;
+        double result;
+
+        cursor = moonshineDBHelper
+                .getCorrectStrength(areometerStrengthRoundUp(areometerStrength),
+                        temperatureRoundUp(temperature));
+        if (cursor.getCount() > 0) {
+            cursor.moveToFirst();
+            cursorCorrectStrengthArStrUpTempUp = cursor
+                    .getString(cursor.getColumnIndex("correct_strength"));
+            cursorTemperatureRoundUp = cursor
+                    .getString(cursor.getColumnIndex("temperature"));
+            cursorAreometerStrengthRoundUp = cursor
+                    .getString(cursor.getColumnIndex("strength"));
+        }
+        cursor = moonshineDBHelper
+                .getCorrectStrength(areometerStrengthRoundDown(areometerStrength),
+                        temperatureRoundDown(temperature));
+        if (cursor.getCount() > 0) {
+            cursor.moveToFirst();
+            cursorCorrectStrengthArStrDownTempDown = cursor
+                    .getString(cursor.getColumnIndex("correct_strength"));
+            cursorTemperatureRoundDown = cursor
+                    .getString(cursor.getColumnIndex("temperature"));
+            cursorAreometerStrengthRoundDown = cursor
+                    .getString(cursor.getColumnIndex("strength"));
+        }
+        cursor = moonshineDBHelper
+                .getCorrectStrength(areometerStrengthRoundUp(areometerStrength),
+                        temperatureRoundDown(temperature));
+        if (cursor.getCount() > 0) {
+            cursor.moveToFirst();
+            cursorCorrectStrengthArStrUpTempDown = cursor
+                    .getString(cursor.getColumnIndex("correct_strength"));
+        }
+        cursor = moonshineDBHelper
+                .getCorrectStrength(areometerStrengthRoundDown(areometerStrength),
+                        temperatureRoundUp(temperature));
+        if (cursor.getCount() > 0) {
+            cursor.moveToFirst();
+            cursorCorrectStrengthArStrDownTempUp = cursor
+                    .getString(cursor.getColumnIndex("correct_strength"));
+        }
+        result = formulas.formulaRoundingAll(
+                Double.parseDouble(temperature),
+                Double.parseDouble(areometerStrength),
+                Double.parseDouble(cursorTemperatureRoundDown),
+                Double.parseDouble(cursorTemperatureRoundUp),
+                Double.parseDouble(cursorAreometerStrengthRoundDown),
+                Double.parseDouble(cursorAreometerStrengthRoundUp),
+                Double.parseDouble(cursorCorrectStrengthArStrUpTempDown),
+                Double.parseDouble(cursorCorrectStrengthArStrUpTempUp),
+                Double.parseDouble(cursorCorrectStrengthArStrDownTempDown),
+                Double.parseDouble(cursorCorrectStrengthArStrDownTempUp)
         );
         cursor.close();
         return result;
