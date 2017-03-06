@@ -13,6 +13,11 @@ import java.util.Locale;
 import project.phoenix.moonshiterscalculator.R;
 import project.phoenix.moonshiterscalculator.ui.activity.template.TemplateActivity;
 
+/**
+ * (перевести)
+ * Activity для расчета максимального содержания спирта в браге, абсолютного спирта и
+ * результирующего объема сусла.
+ */
 
 public class BragaActivity extends TemplateActivity {
     private Button buttonResult;
@@ -48,6 +53,9 @@ public class BragaActivity extends TemplateActivity {
         });
     }
 
+    /**
+     * Метод для инициализации элементов пользовательского интерфейса.
+     */
     private void initViews() {
         buttonResult = (Button) findViewById(R.id.braga_button);
         editTextWeightSugar = (EditText) findViewById(R.id.braga_weight_sugar);
@@ -57,6 +65,10 @@ public class BragaActivity extends TemplateActivity {
         textViewVolumeSolution = (TextView) findViewById(R.id.braga_volume_solution);
     }
 
+    /**
+     * Проверка полей на пустые значения.
+     * Изменение типа введенного значения на Double.
+     */
     private void parserStringToDoubleForResources() {
         String textWeightSugar = editTextWeightSugar.getText().toString();
         String textWaterVolume = editTextWaterVolume.getText().toString();
@@ -72,18 +84,39 @@ public class BragaActivity extends TemplateActivity {
         }
     }
 
+    /**
+     * Расчет абсолютного спирта.
+     * @param sugarWeight Вес сахара.
+     */
     private double dehydratedAlcohol(double sugarWeight) {
         return sugarWeight * 0.62;
     }
 
+    /**
+     * Пересчет из веса сахара в объем.
+     * @param sugarWeight Вес сахара.
+     * @return Объем сахара в растворе.
+     */
     private double mgSugarPerMl(double sugarWeight) {
         return sugarWeight * 0.63;
     }
 
+    /**
+     * Расчет объема сусла.
+     * @param volumeWater Объем воды.
+     * @param sugarVolume Объем сахара в растворе.
+     * @return Объем сусла.
+     */
     private double volumeSolution(double volumeWater, double sugarVolume) {
         return volumeWater + sugarVolume;
     }
 
+    /**
+     * Расчет максимальное крепости в браге.
+     * @param dehydratedAlcohol Абсолютный спирт.
+     * @param volumeSolution Общий объем сусла.
+     * @return Максимальная крепость в браге.
+     */
     private double maxStrength(double dehydratedAlcohol, double volumeSolution) {
         return (dehydratedAlcohol / volumeSolution) * 100;
     }
