@@ -18,9 +18,12 @@ import project.phoenix.moonshiterscalculator.ui.adapter.MoonshineArrayAdapter;
 import project.phoenix.moonshiterscalculator.R;
 import project.phoenix.moonshiterscalculator.ui.adapter.Section;
 
+/**
+ * Activity with main menu.
+ */
+
 public class MainActivity extends AppCompatActivity {
     private ArrayList<Object> sections = new ArrayList<>();
-    private MoonshineArrayAdapter listAdapter;
     private Context context = this;
 
     @Override
@@ -51,8 +54,11 @@ public class MainActivity extends AppCompatActivity {
         dialogQuitApplication();
     }
 
+    /**
+     * Create ListView with MoonshineArrayAdapter
+     */
     private void listViewCreate() {
-        listAdapter = new MoonshineArrayAdapter(context, sections);
+        MoonshineArrayAdapter listAdapter = new MoonshineArrayAdapter(context, sections);
         ListView listView = (ListView) findViewById(R.id.mainList);
         listView.setAdapter(listAdapter);
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -63,6 +69,10 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
+    /**
+     * Method for starting needed activity.
+     * @param position Position on listView element which pressed.
+     */
     private void onListViewItemClick(int position) {
         if (position == 0) {
             Intent intent = new Intent(MainActivity.this, DilutionActivity.class);
@@ -79,9 +89,12 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    /**
+     * Dialog menu for quit application.
+     */
     private void dialogQuitApplication() {
         AlertDialog.Builder quitDialog = new AlertDialog.Builder(MainActivity.this);
-        quitDialog.setTitle("Выход: Вы уверены?");
+        quitDialog.setTitle("Закрыть приложение?");
         quitDialog.setPositiveButton("Да", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
