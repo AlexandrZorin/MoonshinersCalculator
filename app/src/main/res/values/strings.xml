@@ -54,4 +54,8 @@
     <!--sugar to glucose-->
     <string name="sugar_to_glucose_title">Замена сахара глюкозой</string>
     <string name="sugar_to_glucose_description">Замена сахара глюкозой</string>
+    <string name="sugar_to_glucose_textView_sugar_weight">Введите вес сахара</string>
+    <string name="sugar_to_glucose_textView_result">Требующееся количество глюкозы</string>
+    <string name="sugar_to_glucose_exception_blank_field_sugar_weight">Поле \"Вес сахара\"
+        должно быть заолнено</string>
 </resources>

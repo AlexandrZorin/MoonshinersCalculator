@@ -3,4 +3,32 @@
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/sugar_to_glucose_textView_sugar_weight"/>
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="number"
+        android:ems="10"
+        android:id="@+id/sugar_to_glucose_sugar_weight" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/sugar_to_glucose_textView_result" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/sugar_to_glucose_result" />
+
+    <Button
+        android:text="@string/button_result"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/sugar_to_glucose_button" />
+
 </LinearLayout>
