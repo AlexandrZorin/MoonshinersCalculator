@@ -17,6 +17,7 @@ import project.phoenix.moonshiterscalculator.ui.activity.alcoholstrength.Alcohol
 import project.phoenix.moonshiterscalculator.ui.activity.braga.BragaActivity;
 import project.phoenix.moonshiterscalculator.ui.activity.correctstregth.CorrectStrengthActivity;
 import project.phoenix.moonshiterscalculator.ui.activity.dilution.DilutionActivity;
+import project.phoenix.moonshiterscalculator.ui.activity.sugartomonosugar.SugarToGlucoseActivity;
 import project.phoenix.moonshiterscalculator.ui.adapter.MoonshineArrayAdapter;
 import project.phoenix.moonshiterscalculator.R;
 import project.phoenix.moonshiterscalculator.ui.adapter.Section;
@@ -48,6 +49,9 @@ public class MainActivity extends AppCompatActivity {
                 R.mipmap.ic_launcher));
         sections.add(new Section(getResources().getString(R.string.strength_correct_title),
                 getResources().getString(R.string.strength_correct_description),
+                R.mipmap.ic_launcher));
+        sections.add(new Section(getResources().getString(R.string.sugar_to_glucose_title),
+                getResources().getString(R.string.sugar_to_glucose_description),
                 R.mipmap.ic_launcher));
         listViewCreate();
     }
@@ -88,6 +92,9 @@ public class MainActivity extends AppCompatActivity {
             startActivity(intent);
         } else if (position == 3) {
             Intent intent = new Intent(MainActivity.this, CorrectStrengthActivity.class);
+            startActivity(intent);
+        } else if (position == 4) {
+            Intent intent = new Intent(MainActivity.this, SugarToGlucoseActivity.class);
             startActivity(intent);
         }
     }
