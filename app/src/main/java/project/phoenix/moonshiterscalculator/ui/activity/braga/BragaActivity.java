@@ -1,4 +1,4 @@
-package project.phoenix.moonshiterscalculator.ui.activity;
+package project.phoenix.moonshiterscalculator.ui.activity.braga;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
