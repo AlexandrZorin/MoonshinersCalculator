@@ -44,9 +44,9 @@ public class DilutionActivity extends TemplateActivity {
             @Override
             public void onClick(View v) {
                 parserStringToDoubleForResources();
-                textViewResultVolumeDiluent.setText(String.format(Locale.getDefault(),"%.2f",
+                textViewResultVolumeDiluent.setText(String.format(Locale.US,"%.2f",
                         calculateResultVolumeDiluent()));
-                textViewResultVolume.setText(String.format(Locale.getDefault(),"%.2f",
+                textViewResultVolume.setText(String.format(Locale.US,"%.2f",
                         calculateResultVolume(volume)));
             }
         });

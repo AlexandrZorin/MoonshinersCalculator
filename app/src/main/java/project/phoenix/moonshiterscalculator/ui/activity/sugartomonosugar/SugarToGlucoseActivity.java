@@ -30,7 +30,7 @@ public class SugarToGlucoseActivity extends TemplateActivity {
             @Override
             public void onClick(View v) {
                 parserStringToDoubleForResources();
-                textViewResult.setText(String.format(Locale.getDefault(), "%.2f",
+                textViewResult.setText(String.format(Locale.US, "%.3f",
                         sugarToGlucose(sugarWeight)));
             }
         });

@@ -43,11 +43,11 @@ public class BragaActivity extends TemplateActivity {
                 double volumeSolution = volumeSolution(waterVolume, sugarVolume);
                 double dehydratedAlcohol = dehydratedAlcohol(sugarWeight);
                 textViewVolumeSolution
-                        .setText(String.format(Locale.getDefault(),"%.2f", volumeSolution));
+                        .setText(String.format(Locale.US,"%.2f", volumeSolution));
                 textViewDehydratedAlcohol
-                        .setText(String.format(Locale.getDefault(),"%.2f", dehydratedAlcohol));
+                        .setText(String.format(Locale.US,"%.2f", dehydratedAlcohol));
                 textViewMaxStrength
-                        .setText(String.format(Locale.getDefault(), "%.2f",
+                        .setText(String.format(Locale.US, "%.2f",
                                 maxStrength(dehydratedAlcohol, volumeSolution)));
             }
         });
