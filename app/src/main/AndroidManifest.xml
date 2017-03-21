@@ -34,9 +34,9 @@
             android:noHistory="true"
             android:label="@string/strength_correct_title" />
         <activity
-            android:name=".ui.activity.sugartomonosugar.SugarToMonosaccharideActivity"
+            android:name=".ui.activity.sugartomonosugar.SugarToGlucoseActivity"
             android:noHistory="true"
-            android:label="@string/sugar_to_monosaccharide_title" />
+            android:label="@string/sugar_to_glucose_title" />
     </application>
 
 </manifest>

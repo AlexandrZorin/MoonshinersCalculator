@@ -51,8 +51,7 @@
     <string name="strength_correct_exception_blank_field_temperature">Поле
         \"Температура спирта\" должно быть заполнено</string>
 
-    <!--sugar to monosaccharide-->
-    <string name="sugar_to_monosaccharide_title">Замена сахара моносахарами</string>
-    <string name="sugar_to_monosaccharide_description">Замена сахара глюкозой, декстрозой,
-        или фруктозой</string>
+    <!--sugar to glucose-->
+    <string name="sugar_to_glucose_title">Замена сахара глюкозой</string>
+    <string name="sugar_to_glucose_description">Замена сахара глюкозой</string>
 </resources>
