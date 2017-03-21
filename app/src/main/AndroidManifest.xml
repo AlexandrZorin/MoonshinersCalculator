@@ -18,21 +18,25 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".ui.activity.DilutionActivity"
+            android:name=".ui.activity.dilution.DilutionActivity"
             android:noHistory="true"
             android:label="@string/dilution_title" />
         <activity
-            android:name=".ui.activity.BragaActivity"
+            android:name=".ui.activity.braga.BragaActivity"
             android:noHistory="true"
             android:label="@string/braga_title" />
         <activity
-            android:name=".ui.activity.AlcoholStrengthActivity"
+            android:name=".ui.activity.alcoholstrength.AlcoholStrengthActivity"
             android:noHistory="true"
             android:label="@string/alcohol_strength_title" />
         <activity
             android:name=".ui.activity.correctstregth.CorrectStrengthActivity"
             android:noHistory="true"
             android:label="@string/strength_correct_title" />
+        <activity
+            android:name=".ui.activity.sugartomonosugar.SugarToMonosaccharideActivity"
+            android:noHistory="true"
+            android:label="@string/sugar_to_monosaccharide_title" />
     </application>
 
 </manifest>
