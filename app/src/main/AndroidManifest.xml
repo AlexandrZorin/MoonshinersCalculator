@@ -37,6 +37,10 @@
             android:name=".ui.activity.sugartomonosugar.SugarToGlucoseActivity"
             android:noHistory="true"
             android:label="@string/sugar_to_glucose_title" />
+        <activity
+            android:name=".ui.activity.strengthbytemperature.StrengthByTemperatureActivity"
+            android:noHistory="true"
+            android:label="@string/sugar_to_glucose_title" />
     </application>
 
 </manifest>
