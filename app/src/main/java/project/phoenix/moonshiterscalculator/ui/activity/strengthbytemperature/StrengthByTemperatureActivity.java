@@ -56,7 +56,7 @@ public class StrengthByTemperatureActivity extends TemplateActivity {
     }
 
     private double temperatureBouling(double temperature) {
-        double ti = (temperature-89.03)/6.54;
+        double ti = (temperature - 89.03) / 6.54;
         return 16.75 - 19.05 * ti + 12.64 * Math.pow(ti, 2)
                 - 3.69 * Math.pow(ti, 3) - 0.38 * Math.pow(ti, 4);
     }
