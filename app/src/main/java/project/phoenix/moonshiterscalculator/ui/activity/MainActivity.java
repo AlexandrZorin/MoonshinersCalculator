@@ -44,9 +44,6 @@ public class MainActivity extends AppCompatActivity {
         sections.add(new Section(getResources().getString(R.string.braga_title),
                 getResources().getString(R.string.braga_description),
                 R.mipmap.ic_launcher));
-        sections.add(new Section(getResources().getString(R.string.alcohol_strength_title),
-                getResources().getString(R.string.alcohol_strength_description),
-                R.mipmap.ic_launcher));
         sections.add(new Section(getResources().getString(R.string.strength_correct_title),
                 getResources().getString(R.string.strength_correct_description),
                 R.mipmap.ic_launcher));
@@ -88,12 +85,9 @@ public class MainActivity extends AppCompatActivity {
             Intent intent = new Intent(MainActivity.this, BragaActivity.class);
             startActivity(intent);
         } else if (position == 2) {
-            Intent intent = new Intent(MainActivity.this, AlcoholStrengthActivity.class);
-            startActivity(intent);
-        } else if (position == 3) {
             Intent intent = new Intent(MainActivity.this, CorrectStrengthActivity.class);
             startActivity(intent);
-        } else if (position == 4) {
+        } else if (position == 3) {
             Intent intent = new Intent(MainActivity.this, SugarToGlucoseActivity.class);
             startActivity(intent);
         }
