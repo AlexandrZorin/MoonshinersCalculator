@@ -54,7 +54,7 @@
     <!--sugar to glucose-->
     <string name="sugar_to_glucose_title">Замена сахара глюкозой</string>
     <string name="sugar_to_glucose_description">Замена сахара глюкозой</string>
-    <string name="sugar_to_glucose_textView_sugar_weight">Вес сахара</string>
+    <string name="sugar_to_glucose_textView_sugar_weight">Вес сахара, кг</string>
     <string name="sugar_to_glucose_textView_result">Требующееся количество глюкозы</string>
     <string name="sugar_to_glucose_exception_blank_field_sugar_weight">Поле \"Вес сахара\"
         должно быть заолнено</string>
@@ -63,8 +63,8 @@
     <string name="strength_by_temperature_title">Крепость по температуре кипения</string>
     <string name="strength_by_temperature_description">Определение крепости спирта по температуре
         кипения</string>
-    <string name="strength_by_temperature_textView_temperature_boiling">Температура кипения</string>
-    <string name="strength_by_temperature_textView_result">Крепость</string>
+    <string name="strength_by_temperature_textView_temperature_boiling">Температура кипения C°</string>
+    <string name="strength_by_temperature_textView_result">Крепость %</string>
     <string name="strength_by_temperature_exception_blank_field_temperature_boiling">Поле
         \"Температура кипения\" должно быть заолнено</string>
 </resources>
