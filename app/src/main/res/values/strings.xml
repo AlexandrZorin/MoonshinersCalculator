@@ -58,4 +58,9 @@
     <string name="sugar_to_glucose_textView_result">Требующееся количество глюкозы</string>
     <string name="sugar_to_glucose_exception_blank_field_sugar_weight">Поле \"Вес сахара\"
         должно быть заолнено</string>
+
+    <!--strength by temperature-->
+    <string name="strength_by_temperature_title">Крепость по температуре кипения</string>
+    <string name="strength_by_temperature_description">Определение крепости спирта по температуре
+        кипения</string>
 </resources>
