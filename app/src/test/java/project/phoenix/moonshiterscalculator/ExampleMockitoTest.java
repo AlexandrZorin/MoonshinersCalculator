@@ -1,7 +1,6 @@
 package project.phoenix.moonshiterscalculator;
 
 import android.content.Context;
-import android.database.Cursor;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -9,13 +8,12 @@ import org.mockito.Mock;
 import org.mockito.junit.MockitoJUnitRunner;
 
 import project.phoenix.moonshiterscalculator.ui.activity.correctstregth.DeterminationResultCorrectStrength;
-import project.phoenix.moonshiterscalculator.ui.db.MoonshineDBHelper;
 
 import static org.junit.Assert.assertEquals;
 import static org.mockito.Mockito.when;
 
 @RunWith(MockitoJUnitRunner.class)
-public class ExampleMockTest {
+public class ExampleMockitoTest {
     @Mock
     Context mockContext;
 
