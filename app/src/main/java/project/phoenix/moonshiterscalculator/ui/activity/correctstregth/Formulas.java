@@ -1,8 +1,12 @@
 package project.phoenix.moonshiterscalculator.ui.activity.correctstregth;
 
-public class Formulas {
+/**
+ * Class for calculating the correction of strength by formulas.
+ */
 
-    public double formulaRoundingAreometerStrength(
+class Formulas {
+
+    double formulaRoundingAreometerStrength(
             double areometerStrength,
             double areometerStrengthRoundDown,
             double areometerStrengthRoundUp,
@@ -16,7 +20,7 @@ public class Formulas {
                         (correctStrengthRoundUp - correctStrengthRoundDown));
     }
 
-    public double formulaRoundingTemperature(
+    double formulaRoundingTemperature(
             double temperature,
             double temperatureRoundDown,
             double temperatureRoundUp,
@@ -30,7 +34,7 @@ public class Formulas {
                         (correctStrengthRoundDown - correctStrengthRoundUp));
     }
 
-    public double formulaRoundingAll(
+    double formulaRoundingAll(
             double temperature,
             double areometerStrength,
             double temperatureRoundDown,
