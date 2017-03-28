@@ -12,7 +12,7 @@ import project.phoenix.moonshiterscalculator.R;
 import project.phoenix.moonshiterscalculator.ui.activity.template.TemplateActivity;
 
 /**
- * Activity для коррекции показаний ареометра по температуре.
+ * Activity for correcting the readings of the hydrometer by temperature.
  */
 
 public class CorrectStrengthActivity extends TemplateActivity {
