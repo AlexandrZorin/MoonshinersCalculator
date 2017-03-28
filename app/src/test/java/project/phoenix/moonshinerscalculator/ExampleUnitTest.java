@@ -1,4 +1,4 @@
-package project.phoenix.moonshiterscalculator;
+package project.phoenix.moonshinerscalculator;
 
 import org.junit.Test;
 

@@ -1,4 +1,4 @@
-package project.phoenix.moonshiterscalculator;
+package project.phoenix.moonshinerscalculator;
 
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;
