@@ -11,6 +11,9 @@ import android.widget.Toast;
 import project.phoenix.moonshiterscalculator.R;
 import project.phoenix.moonshiterscalculator.ui.activity.template.TemplateActivity;
 
+/**
+ * Activity для коррекции показаний ареометра по температуре.
+ */
 
 public class CorrectStrengthActivity extends TemplateActivity {
     private Button buttonResult;
