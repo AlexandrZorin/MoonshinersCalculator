@@ -1,4 +1,4 @@
-package project.phoenix.moonshinerscalculator.ui.db;
+package project.phoenix.moonshinerscalculator.db;
 
 import android.content.Context;
 import android.database.Cursor;

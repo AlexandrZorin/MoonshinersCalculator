@@ -5,7 +5,7 @@ import android.database.Cursor;
 
 import java.util.Locale;
 
-import project.phoenix.moonshinerscalculator.ui.db.MoonshineDBHelper;
+import project.phoenix.moonshinerscalculator.db.MoonshineDBHelper;
 
 /**
  * Класс для определения скорректированной крепости спиртового раствора.
