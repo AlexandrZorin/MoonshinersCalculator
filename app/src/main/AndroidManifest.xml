@@ -2,6 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="project.phoenix.moonshinerscalculator">
 
+    <uses-permission android:name="android.permission.INTERNET"/>
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -42,5 +44,4 @@
             android:noHistory="true"
             android:label="@string/sugar_to_glucose_title" />
     </application>
-
 </manifest>
