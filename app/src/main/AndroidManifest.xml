@@ -2,7 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="project.phoenix.moonshinerscalculator">
 
-    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:allowBackup="true"
@@ -21,27 +21,36 @@
         </activity>
         <activity
             android:name=".ui.activity.dilution.DilutionActivity"
-            android:noHistory="true"
-            android:label="@string/dilution_title" />
+            android:label="@string/dilution_title"
+            android:noHistory="true" />
         <activity
             android:name=".ui.activity.braga.BragaActivity"
-            android:noHistory="true"
-            android:label="@string/braga_title" />
+            android:label="@string/braga_title"
+            android:noHistory="true" />
         <activity
             android:name=".ui.activity.alcoholstrength.AlcoholStrengthActivity"
-            android:noHistory="true"
-            android:label="@string/alcohol_strength_title" />
+            android:label="@string/alcohol_strength_title"
+            android:noHistory="true" />
         <activity
             android:name=".ui.activity.correctstregth.CorrectStrengthActivity"
-            android:noHistory="true"
-            android:label="@string/strength_correct_title" />
+            android:label="@string/strength_correct_title"
+            android:noHistory="true" />
         <activity
             android:name=".ui.activity.sugartomonosugar.SugarToGlucoseActivity"
-            android:noHistory="true"
-            android:label="@string/sugar_to_glucose_title" />
+            android:label="@string/sugar_to_glucose_title"
+            android:noHistory="true" />
         <activity
             android:name=".ui.activity.strengthbytemperature.StrengthByTemperatureActivity"
-            android:noHistory="true"
-            android:label="@string/sugar_to_glucose_title" />
+            android:label="@string/sugar_to_glucose_title"
+            android:noHistory="true" />
+        <activity
+            android:name=".ui.activity.recipes.RecipesActivity"
+            android:label="@string/recipes_title"
+            android:noHistory="true" />
+
+        <service
+            android:name=".services.RecipesIntentService"
+            android:exported="false" />
     </application>
+
 </manifest>
