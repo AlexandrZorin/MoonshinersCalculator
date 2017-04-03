@@ -67,4 +67,8 @@
     <string name="strength_by_temperature_textView_result">Крепость %</string>
     <string name="strength_by_temperature_exception_blank_field_temperature_boiling">Поле
         \"Температура кипения\" должно быть заолнено</string>
+
+    <!--recipes-->
+    <string name="recipes_title">Рецепты</string>
+    <string name="recipes_description">Рецепты</string>
 </resources>
