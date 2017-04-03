@@ -20,7 +20,7 @@ import project.phoenix.moonshinerscalculator.ui.activity.dilution.DilutionActivi
 import project.phoenix.moonshinerscalculator.ui.activity.strengthbytemperature.StrengthByTemperatureActivity;
 import project.phoenix.moonshinerscalculator.ui.activity.sugartomonosugar.SugarToGlucoseActivity;
 import project.phoenix.moonshinerscalculator.ui.adapter.MoonshineArrayAdapter;
-import project.phoenix.moonshinerscalculator.ui.adapter.Section;
+import project.phoenix.moonshinerscalculator.datamodel.Section;
 
 /**
  * Activity with main menu.

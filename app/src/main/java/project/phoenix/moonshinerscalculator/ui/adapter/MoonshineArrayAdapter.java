@@ -13,6 +13,7 @@ import android.widget.TextView;
 import java.util.List;
 
 import project.phoenix.moonshinerscalculator.R;
+import project.phoenix.moonshinerscalculator.datamodel.Section;
 
 /**
  * Custom ListView adapter based on ArrayAdapter.

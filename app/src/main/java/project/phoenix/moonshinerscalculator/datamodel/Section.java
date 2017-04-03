@@ -1,4 +1,4 @@
-package project.phoenix.moonshinerscalculator.ui.adapter;
+package project.phoenix.moonshinerscalculator.datamodel;
 
 public class Section {
     private String sectionName;
