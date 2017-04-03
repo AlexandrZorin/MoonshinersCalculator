@@ -14,13 +14,13 @@ import android.widget.ListView;
 import java.util.ArrayList;
 
 import project.phoenix.moonshinerscalculator.R;
+import project.phoenix.moonshinerscalculator.datamodel.Section;
 import project.phoenix.moonshinerscalculator.ui.activity.braga.BragaActivity;
 import project.phoenix.moonshinerscalculator.ui.activity.correctstregth.CorrectStrengthActivity;
 import project.phoenix.moonshinerscalculator.ui.activity.dilution.DilutionActivity;
 import project.phoenix.moonshinerscalculator.ui.activity.strengthbytemperature.StrengthByTemperatureActivity;
 import project.phoenix.moonshinerscalculator.ui.activity.sugartomonosugar.SugarToGlucoseActivity;
 import project.phoenix.moonshinerscalculator.ui.adapter.MoonshineArrayAdapter;
-import project.phoenix.moonshinerscalculator.datamodel.Section;
 
 /**
  * Activity with main menu.
