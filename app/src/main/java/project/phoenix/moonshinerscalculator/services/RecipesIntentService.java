@@ -8,10 +8,6 @@ import android.util.Log;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
-
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
@@ -24,13 +20,15 @@ import project.phoenix.moonshinerscalculator.datamodel.Recipe;
 
 public class RecipesIntentService extends IntentService {
     private static final String LOG_TAG = "myLog";
+    private Recipe recipe;
 
-    public RecipesIntentService(String name) {
-        super(name);
+    public RecipesIntentService() {
+        super("RecipesIntentService");
     }
 
     @Override
     protected void onHandleIntent(@Nullable Intent intent) {
+        jsonParser(jsonUrlToString("1"));
 
     }
 
@@ -61,6 +59,6 @@ public class RecipesIntentService extends IntentService {
         Log.d(LOG_TAG, strJson);
         GsonBuilder builder = new GsonBuilder();
         Gson gson = builder.create();
-        Recipe recipe = gson.fromJson(strJson, Recipe.class);
+        recipe = gson.fromJson(strJson, Recipe.class);
     }
 }
