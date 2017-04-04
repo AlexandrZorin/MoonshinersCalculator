@@ -6,14 +6,16 @@ import android.support.annotation.Nullable;
 import android.util.Log;
 
 import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
+import com.google.gson.reflect.TypeToken;
 
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.lang.reflect.Type;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.util.ArrayList;
 
 import project.phoenix.moonshinerscalculator.datamodel.Recipe;
 
@@ -21,6 +23,7 @@ import project.phoenix.moonshinerscalculator.datamodel.Recipe;
 public class RecipesIntentService extends IntentService {
     private static final String LOG_TAG = "myLog";
     private Recipe recipe;
+    private ArrayList<Recipe> recipes;
 
     public RecipesIntentService() {
         super("RecipesIntentService");
@@ -28,8 +31,8 @@ public class RecipesIntentService extends IntentService {
 
     @Override
     protected void onHandleIntent(@Nullable Intent intent) {
-        jsonParser(jsonUrlToString("1"));
-
+        parseJsonId(jsonUrlToString("1"));
+        parseJsonAll(jsonUrlToString("all"));
     }
 
     private String jsonUrlToString(String recipeId) {
@@ -55,10 +58,16 @@ public class RecipesIntentService extends IntentService {
         return resultJson;
     }
 
-    private void jsonParser(String strJson) {
+    private void parseJsonId(String strJson) {
         Log.d(LOG_TAG, strJson);
-        GsonBuilder builder = new GsonBuilder();
-        Gson gson = builder.create();
+        Gson gson = new Gson();
         recipe = gson.fromJson(strJson, Recipe.class);
+    }
+
+    private void parseJsonAll(String strJson) {
+        Log.d(LOG_TAG, strJson);
+        Type listType = new TypeToken<ArrayList<Recipe>>(){}.getType();
+        Gson gson = new Gson();
+        recipes = gson.fromJson(strJson, listType);
     }
 }
