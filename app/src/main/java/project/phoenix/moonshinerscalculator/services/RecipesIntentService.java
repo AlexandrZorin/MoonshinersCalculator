@@ -18,6 +18,7 @@ import java.net.URL;
 import java.util.ArrayList;
 
 import project.phoenix.moonshinerscalculator.datamodel.Recipe;
+import project.phoenix.moonshinerscalculator.db.RecipesDBHelper;
 
 
 public class RecipesIntentService extends IntentService {
@@ -31,8 +32,11 @@ public class RecipesIntentService extends IntentService {
 
     @Override
     protected void onHandleIntent(@Nullable Intent intent) {
-        parseJsonId(jsonUrlToString("1"));
         parseJsonAll(jsonUrlToString("all"));
+        RecipesDBHelper recipesDBHelper = new RecipesDBHelper(this);
+        for (Recipe recipeElem: recipes) {
+            recipesDBHelper.addRecipe(recipeElem);
+        }
     }
 
     private String jsonUrlToString(String recipeId) {
