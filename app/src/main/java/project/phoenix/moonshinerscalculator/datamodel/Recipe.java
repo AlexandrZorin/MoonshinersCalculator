@@ -2,9 +2,9 @@ package project.phoenix.moonshinerscalculator.datamodel;
 
 public class Recipe {
     private int id;
-    private String recipeName;
-    private String recipeDescription;
-    private String recipeText;
+    private String name;
+    private String description;
+    private String text;
 
     public int getId() {
         return id;
@@ -14,27 +14,27 @@ public class Recipe {
         this.id = id;
     }
 
-    public String getRecipeName() {
-        return recipeName;
+    public String getName() {
+        return name;
     }
 
-    public void setRecipeName(String recipeName) {
-        this.recipeName = recipeName;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public String getRecipeDescription() {
-        return recipeDescription;
+    public String getDescription() {
+        return description;
     }
 
-    public void setRecipeDescription(String recipeDescription) {
-        this.recipeDescription = recipeDescription;
+    public void setDescription(String description) {
+        this.description = description;
     }
 
-    public String getRecipeText() {
-        return recipeText;
+    public String getText() {
+        return text;
     }
 
-    public void setRecipeText(String recipeText) {
-        this.recipeText = recipeText;
+    public void setText(String text) {
+        this.text = text;
     }
 }
