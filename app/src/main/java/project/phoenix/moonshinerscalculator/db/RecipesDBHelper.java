@@ -2,6 +2,8 @@ package project.phoenix.moonshinerscalculator.db;
 
 import android.content.Context;
 import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
+import android.database.sqlite.SQLiteException;
 
 import com.readystatesoftware.sqliteasset.SQLiteAssetHelper;
 
@@ -16,7 +18,17 @@ public class RecipesDBHelper extends SQLiteAssetHelper {
     }
 
     public void addRecipe(Recipe recipe) {
-
+        SQLiteDatabase database;
+        try {
+            database = this.getWritableDatabase();
+            database.rawQuery(
+                    "INSERT INTO table_recipes (name, description, text) " +
+                    "VALUES ('?', '?', '?');",
+                    new String[]{recipe.getName(), recipe.getDescription(), recipe.getText()}
+            );
+        } catch (SQLiteException e) {
+            e.printStackTrace();
+        }
     }
 
     public Cursor getRecipe(Recipe recipe) {
