@@ -18,6 +18,7 @@ import project.phoenix.moonshinerscalculator.datamodel.Section;
 import project.phoenix.moonshinerscalculator.ui.activity.braga.BragaActivity;
 import project.phoenix.moonshinerscalculator.ui.activity.correctstregth.CorrectStrengthActivity;
 import project.phoenix.moonshinerscalculator.ui.activity.dilution.DilutionActivity;
+import project.phoenix.moonshinerscalculator.ui.activity.recipes.RecipesActivity;
 import project.phoenix.moonshinerscalculator.ui.activity.strengthbytemperature.StrengthByTemperatureActivity;
 import project.phoenix.moonshinerscalculator.ui.activity.sugartomonosugar.SugarToGlucoseActivity;
 import project.phoenix.moonshinerscalculator.ui.adapter.MoonshineArrayAdapter;
@@ -52,6 +53,9 @@ public class MainActivity extends AppCompatActivity {
                 R.mipmap.ic_launcher));
         sections.add(new Section(getResources().getString(R.string.strength_by_temperature_title),
                 getResources().getString(R.string.strength_by_temperature_description),
+                R.mipmap.ic_launcher));
+        sections.add(new Section(getResources().getString(R.string.recipes_title),
+                getResources().getString(R.string.recipes_description),
                 R.mipmap.ic_launcher));
         listViewCreate();
     }
@@ -93,9 +97,11 @@ public class MainActivity extends AppCompatActivity {
         } else if (position == 3) {
             Intent intent = new Intent(MainActivity.this, SugarToGlucoseActivity.class);
             startActivity(intent);
-        }
-         else if (position == 4) {
+        } else if (position == 4) {
             Intent intent = new Intent(MainActivity.this, StrengthByTemperatureActivity.class);
+            startActivity(intent);
+        } else if (position == 5) {
+            Intent intent = new Intent(MainActivity.this, RecipesActivity.class);
             startActivity(intent);
         }
     }
